@@ -6,3 +6,7 @@ const PANTALLAS = {
 	"MENU_NIVELES": "res://pantallas/menu_niveles/menu_niveles.tscn",
 	"NIVEL_1": "res://pantallas/niveles/nivel_1/nivel_1.tscn"
 }
+
+const PERSONAJE = {
+	"NOMBRE_ELEMENTO": "Personaje"
+}

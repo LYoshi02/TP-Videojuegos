@@ -1,7 +1,55 @@
-[gd_scene load_steps=2 format=3 uid="uid://yook7105bj3k"]
+[gd_scene load_steps=7 format=3 uid="uid://yook7105bj3k"]
 
 [ext_resource type="PackedScene" uid="uid://csd5xp48x83s2" path="res://ui/hud/hud.tscn" id="1_73ecu"]
+[ext_resource type="Script" uid="uid://cgi4n8uj2g5cd" path="res://scripts/game_manager.gd" id="1_jucfr"]
+[ext_resource type="Texture2D" uid="uid://bwupoa01ijkj0" path="res://icon.svg" id="2_llnjr"]
+[ext_resource type="PackedScene" uid="uid://du875us3dm6vj" path="res://juego/personaje/personaje.tscn" id="3_4oxjr"]
+[ext_resource type="PackedScene" uid="uid://b4vlb5eg0bvv2" path="res://juego/objetos/moneda/moneda.tscn" id="5_4gsg4"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4oxjr"]
+distance = -2.0
 
 [node name="Nivel1" type="Node2D"]
 
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_jucfr")
+
+[node name="Plataforma" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma"]
+position = Vector2(426, 572)
+shape = SubResource("WorldBoundaryShape2D_4oxjr")
+
+[node name="Sprite2D" type="Sprite2D" parent="Plataforma"]
+position = Vector2(576, 610)
+scale = Vector2(8.98438, 0.546875)
+texture = ExtResource("2_llnjr")
+
+[node name="Personaje" parent="." instance=ExtResource("3_4oxjr")]
+position = Vector2(62, 540)
+scale = Vector2(1.89102, 1.89102)
+
+[node name="Camera2D" type="Camera2D" parent="Personaje"]
+process_callback = 0
+position_smoothing_enabled = true
+
+[node name="Monedas" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Moneda" parent="Monedas" instance=ExtResource("5_4gsg4")]
+position = Vector2(247, 548)
+scale = Vector2(2.04692, 2.04692)
+
+[node name="Moneda2" parent="Monedas" instance=ExtResource("5_4gsg4")]
+position = Vector2(317, 525)
+scale = Vector2(2.04692, 2.04692)
+
+[node name="Moneda3" parent="Monedas" instance=ExtResource("5_4gsg4")]
+position = Vector2(384, 550)
+scale = Vector2(2.04692, 2.04692)
+
 [node name="HUD" parent="." instance=ExtResource("1_73ecu")]
+unique_name_in_owner = true
+
+[connection signal="ready" from="HUD" to="GameManager" method="_on_hud_ready"]
