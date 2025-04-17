@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://csd5xp48x83s2"]
+
+[ext_resource type="Script" uid="uid://rcjhx6ffcess" path="res://ui/hud/pausa.gd" id="1_e0nub"]
+[ext_resource type="PackedScene" uid="uid://b4ctirjw1xq53" path="res://ui/titulo.tscn" id="2_w75iv"]
+[ext_resource type="PackedScene" uid="uid://sddk5xqkdc4t" path="res://ui/boton.tscn" id="3_imuuq"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Pausa" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("1_e0nub")
+
+[node name="PausaPanel" type="Panel" parent="Pausa"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TituloPausa" parent="Pausa/PausaPanel" instance=ExtResource("2_w75iv")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -434.5
+offset_top = 80.0
+offset_right = 434.5
+offset_bottom = 191.0
+grow_horizontal = 2
+text = "Pausa"
+
+[node name="ContenedorBotones" type="VBoxContainer" parent="Pausa/PausaPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = -59.0
+offset_right = 166.0
+offset_bottom = 213.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="ContinuarBoton" parent="Pausa/PausaPanel/ContenedorBotones" instance=ExtResource("3_imuuq")]
+layout_mode = 2
+text = "Continuar"
+
+[node name="NivelesBoton" parent="Pausa/PausaPanel/ContenedorBotones" instance=ExtResource("3_imuuq")]
+layout_mode = 2
+text = "Niveles"
+
+[node name="MenuPrincipalBoton" parent="Pausa/PausaPanel/ContenedorBotones" instance=ExtResource("3_imuuq")]
+layout_mode = 2
+text = "Menu Principal"
+
+[node name="SalirBoton" parent="Pausa/PausaPanel/ContenedorBotones" instance=ExtResource("3_imuuq")]
+layout_mode = 2
+text = "Salir"
+
+[connection signal="pressed" from="Pausa/PausaPanel/ContenedorBotones/ContinuarBoton" to="Pausa" method="_on_continuar_boton_pressed"]
+[connection signal="pressed" from="Pausa/PausaPanel/ContenedorBotones/NivelesBoton" to="Pausa" method="_on_niveles_boton_pressed"]
+[connection signal="pressed" from="Pausa/PausaPanel/ContenedorBotones/MenuPrincipalBoton" to="Pausa" method="_on_menu_principal_boton_pressed"]
+[connection signal="pressed" from="Pausa/PausaPanel/ContenedorBotones/SalirBoton" to="Pausa" method="_on_salir_boton_pressed"]

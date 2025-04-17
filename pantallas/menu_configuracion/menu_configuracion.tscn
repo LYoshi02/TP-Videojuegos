@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7ilqfxxyck6l"]
+
+[ext_resource type="Script" uid="uid://b30cnjjme0emd" path="res://pantallas/menu_configuracion/menu_configuracion.gd" id="1_pcvoh"]
+[ext_resource type="PackedScene" uid="uid://b4ctirjw1xq53" path="res://ui/titulo.tscn" id="1_tanxu"]
+[ext_resource type="PackedScene" uid="uid://sddk5xqkdc4t" path="res://ui/boton.tscn" id="3_tbv8m"]
+
+[node name="MenuConfiguracion" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pcvoh")
+
+[node name="Titulo" parent="." instance=ExtResource("1_tanxu")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -434.5
+offset_top = 80.0
+offset_right = 434.5
+offset_bottom = 191.0
+grow_horizontal = 2
+text = "Configuración"
+
+[node name="ContenedorBotones" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = -26.0
+offset_right = 166.0
+offset_bottom = 213.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Slide1Boton" parent="ContenedorBotones" instance=ExtResource("3_tbv8m")]
+layout_mode = 2
+text = "Slide Vol. SFX"
+
+[node name="Slide2Boton" parent="ContenedorBotones" instance=ExtResource("3_tbv8m")]
+layout_mode = 2
+text = "Slide Vol. Música"
+
+[node name="BorrarDatosBoton" parent="ContenedorBotones" instance=ExtResource("3_tbv8m")]
+layout_mode = 2
+text = "Borrar Datos"
+
+[node name="VolverBoton" parent="ContenedorBotones" instance=ExtResource("3_tbv8m")]
+layout_mode = 2
+text = "Volver"
+
+[connection signal="pressed" from="ContenedorBotones/VolverBoton" to="." method="_on_volver_boton_pressed"]

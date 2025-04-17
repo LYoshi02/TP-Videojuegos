@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://tuk1qbeie8yx"]
+
+[ext_resource type="Script" uid="uid://b0y5xgqr4x33" path="res://pantallas/menu_principal/menu_principal.gd" id="1_rqcxr"]
+[ext_resource type="Texture2D" uid="uid://dgog4nfkbtgeh" path="res://assets/imagenes/background.png" id="2_5luq2"]
+[ext_resource type="PackedScene" uid="uid://b4ctirjw1xq53" path="res://ui/titulo.tscn" id="3_co1m1"]
+[ext_resource type="PackedScene" uid="uid://sddk5xqkdc4t" path="res://ui/boton.tscn" id="3_th5i5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ekxnf"]
+texture = ExtResource("2_5luq2")
+modulate_color = Color(0.423651, 0.423651, 0.423651, 1)
+
+[node name="MenuPrincipal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rqcxr")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ekxnf")
+
+[node name="Titulo" parent="." instance=ExtResource("3_co1m1")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -434.5
+offset_top = 80.0
+offset_right = 434.5
+offset_bottom = 191.0
+grow_horizontal = 2
+text = "La Leyenda del Mate Perfecto"
+
+[node name="ContenedorBotones" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = -26.0
+offset_right = 166.0
+offset_bottom = 213.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="NivelesBoton" parent="ContenedorBotones" instance=ExtResource("3_th5i5")]
+layout_mode = 2
+text = "Niveles"
+
+[node name="TiendaBoton" parent="ContenedorBotones" instance=ExtResource("3_th5i5")]
+layout_mode = 2
+text = "Tienda"
+
+[node name="ConfiguracionBoton" parent="ContenedorBotones" instance=ExtResource("3_th5i5")]
+layout_mode = 2
+text = "Configuración"
+
+[node name="SalirBoton" parent="ContenedorBotones" instance=ExtResource("3_th5i5")]
+layout_mode = 2
+text = "Salir"
+
+[connection signal="pressed" from="ContenedorBotones/NivelesBoton" to="." method="_on_niveles_boton_pressed"]
+[connection signal="pressed" from="ContenedorBotones/ConfiguracionBoton" to="." method="_on_configuracion_boton_pressed"]
+[connection signal="pressed" from="ContenedorBotones/SalirBoton" to="." method="_on_salir_boton_pressed"]

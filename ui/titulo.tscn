@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b4ctirjw1xq53"]
+
+[node name="Titulo" type="Label"]
+offset_right = 869.0
+offset_bottom = 111.0
+theme_override_font_sizes/font_size = 60
+text = "Texto"
+horizontal_alignment = 1
+vertical_alignment = 1
