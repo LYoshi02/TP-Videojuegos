@@ -6,6 +6,13 @@ const VELOCIDAD_SALTO = -450.0
 
 @onready var sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+func saltar():
+	velocity.y = VELOCIDAD_SALTO
+
+func saltar_al_costado(x):
+	velocity.y = VELOCIDAD_SALTO
+	velocity.x = x
+
 func _physics_process(delta: float) -> void:
 	# Animations
 	#if velocity.x > 1 || velocity.x < -1:

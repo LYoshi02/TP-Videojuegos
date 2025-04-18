@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://b4vlb5eg0bvv2"]
 
-[ext_resource type="Texture2D" uid="uid://bo3ljgu68sxl4" path="res://assets/sprites/moneda.png" id="1_5v30o"]
+[ext_resource type="Texture2D" uid="uid://bo3ljgu68sxl4" path="res://assets/sprites/objetos/moneda.png" id="1_5v30o"]
 [ext_resource type="Script" uid="uid://tdmf4tqml17h" path="res://juego/objetos/moneda/moneda.gd" id="1_q8gn0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k7cd0"]

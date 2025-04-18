@@ -12,4 +12,4 @@ func actualizar_vidas(vidas_restantes: int):
 		if nro_corazon < vidas_restantes:
 			corazones[nro_corazon].show()
 		else:
-			corazones[nro_corazon].show()
+			corazones[nro_corazon].hide()
