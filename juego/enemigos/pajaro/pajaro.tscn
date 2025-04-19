@@ -1,0 +1,92 @@
+[gd_scene load_steps=11 format=3 uid="uid://bepyv8hfgslgf"]
+
+[ext_resource type="Script" uid="uid://baax1v2bil61e" path="res://juego/enemigos/pajaro/pajaro.gd" id="1_kpn6l"]
+[ext_resource type="Texture2D" uid="uid://u2v70bwbni5b" path="res://assets/sprites/enemigos/pajaro.png" id="2_7j7rv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpn6l"]
+atlas = ExtResource("2_7j7rv")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7j7rv"]
+atlas = ExtResource("2_7j7rv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvrvj"]
+atlas = ExtResource("2_7j7rv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kuf3"]
+atlas = ExtResource("2_7j7rv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w83wk"]
+atlas = ExtResource("2_7j7rv")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ykee"]
+atlas = ExtResource("2_7j7rv")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_icqne"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpn6l")
+}],
+"loop": true,
+"name": &"atacando",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7j7rv")
+}],
+"loop": true,
+"name": &"esperando",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvrvj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kuf3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w83wk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ykee")
+}],
+"loop": true,
+"name": &"patrullando",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7j7rv")
+}],
+"loop": true,
+"name": &"regresando",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lfjpo"]
+size = Vector2(20, 9)
+
+[node name="Pajaro" type="Node2D"]
+script = ExtResource("1_kpn6l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_icqne")
+animation = &"regresando"
+autoplay = "patrullando"
+frame_progress = 0.838178
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_lfjpo")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
