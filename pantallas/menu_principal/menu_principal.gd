@@ -6,6 +6,9 @@ extends Control
 @onready var salir_boton: Button = $ContenedorBotones/SalirBoton
 
 
+func _ready() -> void:
+	GLOBAL.cargar_progreso()
+
 func _on_niveles_boton_pressed() -> void:
 	get_tree().change_scene_to_file(GLOBAL.PANTALLAS["MENU_NIVELES"])
 

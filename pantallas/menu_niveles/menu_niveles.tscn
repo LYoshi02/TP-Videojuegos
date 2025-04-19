@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dn53f0oghdjow"]
+[gd_scene load_steps=6 format=3 uid="uid://dn53f0oghdjow"]
 
 [ext_resource type="Script" uid="uid://cdpccmv5hkto5" path="res://pantallas/menu_niveles/menu_niveles.gd" id="1_1vcou"]
 [ext_resource type="PackedScene" uid="uid://sddk5xqkdc4t" path="res://ui/boton.tscn" id="1_3jpul"]
 [ext_resource type="PackedScene" uid="uid://b4ctirjw1xq53" path="res://ui/titulo.tscn" id="1_o885e"]
+[ext_resource type="PackedScene" uid="uid://m5wbok3qmbim" path="res://ui/seleccion_nivel/seleccion_nivel.tscn" id="4_nougm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwq62"]
 bg_color = Color(0.165656, 0.165657, 0.165655, 1)
@@ -45,13 +46,17 @@ offset_bottom = 191.0
 grow_horizontal = 2
 text = "Niveles"
 
-[node name="Nivel1Boton" parent="." instance=ExtResource("1_3jpul")]
-layout_mode = 0
-offset_left = 128.0
-offset_top = 256.0
-offset_right = 320.0
-offset_bottom = 384.0
-text = "Nivel 1"
+[node name="Niveles" type="Node" parent="."]
+
+[node name="SeleccionNivel1" parent="Niveles" instance=ExtResource("4_nougm")]
+total_monedas = 3
+id_nivel = 1
+
+[node name="SeleccionNivel2" parent="Niveles" instance=ExtResource("4_nougm")]
+offset_left = 274.0
+offset_right = 274.0
+total_monedas = 12
+id_nivel = 2
+id_nivel_anterior = 1
 
 [connection signal="pressed" from="VolverBoton" to="." method="_on_volver_boton_pressed"]
-[connection signal="pressed" from="Nivel1Boton" to="." method="_on_nivel_1_boton_pressed"]

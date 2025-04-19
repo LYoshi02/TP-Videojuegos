@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://m5wbok3qmbim"]
+
+[ext_resource type="Script" uid="uid://citnc26uvdo4x" path="res://ui/seleccion_nivel/seleccion_nivel.gd" id="1_34abs"]
+[ext_resource type="PackedScene" uid="uid://sddk5xqkdc4t" path="res://ui/boton.tscn" id="2_cupc2"]
+
+[node name="SeleccionNivel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_34abs")
+
+[node name="NivelBoton" parent="." instance=ExtResource("2_cupc2")]
+offset_left = 128.0
+offset_top = 256.0
+offset_right = 320.0
+offset_bottom = 384.0
+text = "Nivel X"
+
+[node name="CompletadoLabel" type="Label" parent="."]
+offset_left = 131.0
+offset_top = 404.0
+offset_right = 234.0
+offset_bottom = 427.0
+text = "Completado: "
+
+[node name="MonedasLabel" type="Label" parent="."]
+offset_left = 131.0
+offset_top = 438.0
+offset_right = 234.0
+offset_bottom = 461.0
+text = "Monedas: "
+
+[connection signal="pressed" from="NivelBoton" to="." method="_on_nivel_boton_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://yook7105bj3k"]
+[gd_scene load_steps=11 format=4 uid="uid://yook7105bj3k"]
 
 [ext_resource type="PackedScene" uid="uid://csd5xp48x83s2" path="res://ui/hud/hud.tscn" id="1_73ecu"]
 [ext_resource type="Script" uid="uid://cgi4n8uj2g5cd" path="res://scripts/game_manager.gd" id="1_jucfr"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dmnl8bu8xv1bm" path="res://juego/enemigos/enemigo_prueba.tscn" id="5_lyfj1"]
 [ext_resource type="Texture2D" uid="uid://bqsavssw6cp1s" path="res://assets/sprites/tilesets/tileset_forest.png" id="5_ycegj"]
 [ext_resource type="PackedScene" uid="uid://bjr40lojnxc7b" path="res://juego/objetos/checkpoint/checkpoint.tscn" id="6_ycegj"]
+[ext_resource type="PackedScene" uid="uid://cmkyl52ssxecm" path="res://juego/objetos/mate/mate.tscn" id="8_lyfj1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lyfj1"]
 texture = ExtResource("5_ycegj")
@@ -76,6 +77,7 @@ sources/0 = SubResource("TileSetAtlasSource_lyfj1")
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_jucfr")
+id_nivel = 1
 
 [node name="NodosEscena" type="Node" parent="."]
 
@@ -126,5 +128,9 @@ id_progreso = 2
 
 [node name="HUD" parent="." instance=ExtResource("1_73ecu")]
 unique_name_in_owner = true
+
+[node name="Finish" parent="." instance=ExtResource("8_lyfj1")]
+position = Vector2(1075, 595)
+scale = Vector2(3.248, 3.248)
 
 [connection signal="ready" from="HUD" to="GameManager" method="_on_hud_ready"]

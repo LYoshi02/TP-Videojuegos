@@ -56,4 +56,5 @@ text = "Borrar Datos"
 layout_mode = 2
 text = "Volver"
 
+[connection signal="pressed" from="ContenedorBotones/BorrarDatosBoton" to="." method="_on_borrar_datos_boton_pressed"]
 [connection signal="pressed" from="ContenedorBotones/VolverBoton" to="." method="_on_volver_boton_pressed"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmkyl52ssxecm"]
+
+[ext_resource type="Texture2D" uid="uid://degao6n78xmst" path="res://assets/imagenes/mate.png" id="1_1naqg"]
+[ext_resource type="Script" uid="uid://bcxlp7smfucjq" path="res://juego/objetos/mate/mate.gd" id="1_y3amw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f20d8"]
+size = Vector2(14.5, 14.5)
+
+[node name="Finish" type="Area2D"]
+script = ExtResource("1_y3amw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1naqg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_f20d8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

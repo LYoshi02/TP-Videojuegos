@@ -1,5 +1,7 @@
 extends Node
 
+@export var id_nivel: int
+
 @onready var personaje: CharacterBody2D = %Personaje
 @onready var monedas: Node = %Monedas
 @onready var hud: CanvasLayer = %HUD
@@ -53,3 +55,7 @@ func reaparecer_jugador(jugador: Node2D):
 	else:
 		print("No hay checkpoint registrado. Reapareciendo en el inicio.")
 		jugador.global_position = posicion_inicial
+
+func finalizar_nivel():
+	GLOBAL.actualizar_nivel(id_nivel, monedas_recolectadas)
+	get_tree().call_deferred("change_scene_to_file", GLOBAL.PANTALLAS["MENU_PRINCIPAL"])
