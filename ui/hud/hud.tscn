@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://csd5xp48x83s2"]
+[gd_scene load_steps=14 format=3 uid="uid://csd5xp48x83s2"]
 
 [ext_resource type="Script" uid="uid://rcjhx6ffcess" path="res://ui/hud/pausa.gd" id="1_e0nub"]
 [ext_resource type="Script" uid="uid://cyvahdqdbxwti" path="res://ui/hud/hud.gd" id="1_imuuq"]
@@ -12,9 +12,13 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kwc50"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o2lis"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfles"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o2lis"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gfles"]
 
 [node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("corazones")]
 script = ExtResource("1_imuuq")
@@ -147,18 +151,36 @@ text = "Menu Principal"
 layout_mode = 2
 text = "Salir"
 
-[node name="ControlesMobile" type="Node" parent="."]
+[node name="ControlesMobile" type="Panel" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
 
-[node name="LeftArrow" type="TouchScreenButton" parent="ControlesMobile"]
-position = Vector2(34, 462)
+[node name="Panel" type="Panel" parent="ControlesMobile"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -223.0
+offset_right = 459.0
+offset_bottom = -21.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_o2lis")
+
+[node name="LeftArrow" type="TouchScreenButton" parent="ControlesMobile/Panel"]
+position = Vector2(33, 31)
 scale = Vector2(9.85851, 9.93614)
 texture_normal = ExtResource("7_o2lis")
 shape = SubResource("RectangleShape2D_gfles")
 action = "izquierda"
 visibility_mode = 1
 
-[node name="RightArrow" type="TouchScreenButton" parent="ControlesMobile"]
-position = Vector2(387, 601)
+[node name="RightArrow" type="TouchScreenButton" parent="ControlesMobile/Panel"]
+position = Vector2(392, 169)
 rotation = -3.14159
 scale = Vector2(9.85851, 9.93614)
 texture_normal = ExtResource("7_o2lis")
@@ -166,8 +188,23 @@ shape = SubResource("RectangleShape2D_o2lis")
 action = "derecha"
 visibility_mode = 1
 
-[node name="RightArrow2" type="TouchScreenButton" parent="ControlesMobile"]
-position = Vector2(1086, 462)
+[node name="Panel2" type="Panel" parent="ControlesMobile"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -237.0
+offset_top = -223.0
+offset_right = -29.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gfles")
+
+[node name="UpArrow" type="TouchScreenButton" parent="ControlesMobile/Panel2"]
+position = Vector2(173, 34)
 rotation = 1.5708
 scale = Vector2(9.85851, 9.93614)
 texture_normal = ExtResource("7_o2lis")
