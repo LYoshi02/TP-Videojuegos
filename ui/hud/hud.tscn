@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://csd5xp48x83s2"]
+[gd_scene load_steps=12 format=3 uid="uid://csd5xp48x83s2"]
 
 [ext_resource type="Script" uid="uid://rcjhx6ffcess" path="res://ui/hud/pausa.gd" id="1_e0nub"]
 [ext_resource type="Script" uid="uid://cyvahdqdbxwti" path="res://ui/hud/hud.gd" id="1_imuuq"]
@@ -6,10 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://b4ctirjw1xq53" path="res://ui/titulo.tscn" id="2_w75iv"]
 [ext_resource type="PackedScene" uid="uid://sddk5xqkdc4t" path="res://ui/boton.tscn" id="3_imuuq"]
 [ext_resource type="Texture2D" uid="uid://cxjnb17y6hm1i" path="res://assets/imagenes/corazon.png" id="3_kwc50"]
+[ext_resource type="Texture2D" uid="uid://clf73hllkd8vu" path="res://assets/imagenes/arrow.png" id="7_o2lis"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_imuuq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kwc50"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfles"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2lis"]
 
 [node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("corazones")]
 script = ExtResource("1_imuuq")
@@ -141,6 +146,34 @@ text = "Menu Principal"
 [node name="SalirBoton" parent="Pausa/PausaPanel/ContenedorBotones" instance=ExtResource("3_imuuq")]
 layout_mode = 2
 text = "Salir"
+
+[node name="ControlesMobile" type="Node" parent="."]
+
+[node name="LeftArrow" type="TouchScreenButton" parent="ControlesMobile"]
+position = Vector2(34, 462)
+scale = Vector2(9.85851, 9.93614)
+texture_normal = ExtResource("7_o2lis")
+shape = SubResource("RectangleShape2D_gfles")
+action = "izquierda"
+visibility_mode = 1
+
+[node name="RightArrow" type="TouchScreenButton" parent="ControlesMobile"]
+position = Vector2(387, 601)
+rotation = -3.14159
+scale = Vector2(9.85851, 9.93614)
+texture_normal = ExtResource("7_o2lis")
+shape = SubResource("RectangleShape2D_o2lis")
+action = "derecha"
+visibility_mode = 1
+
+[node name="RightArrow2" type="TouchScreenButton" parent="ControlesMobile"]
+position = Vector2(1086, 462)
+rotation = 1.5708
+scale = Vector2(9.85851, 9.93614)
+texture_normal = ExtResource("7_o2lis")
+shape = SubResource("RectangleShape2D_gfles")
+action = "salto"
+visibility_mode = 1
 
 [connection signal="pressed" from="Pausa/PausaPanel/ContenedorBotones/ContinuarBoton" to="Pausa" method="_on_continuar_boton_pressed"]
 [connection signal="pressed" from="Pausa/PausaPanel/ContenedorBotones/NivelesBoton" to="Pausa" method="_on_niveles_boton_pressed"]
