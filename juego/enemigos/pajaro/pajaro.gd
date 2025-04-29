@@ -59,7 +59,6 @@ func _process(delta):
 		Estado.REGRESANDO:
 			mover_hacia(posicion_regreso, delta, velocidad_regreso)
 			animated_sprite_2d.play("regresando")
-			print(global_position.distance_to(posicion_regreso))
 			if global_position.distance_to(posicion_regreso) < 50.0:
 				# Ajustar el ángulo para retomar el círculo sin saltos
 				var direccion = global_position - posicion_origen

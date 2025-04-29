@@ -83,8 +83,8 @@ id_nivel = 1
 
 [node name="Personaje" parent="NodosEscena" instance=ExtResource("3_4oxjr")]
 unique_name_in_owner = true
-position = Vector2(29, 586)
-scale = Vector2(1.89102, 1.89102)
+position = Vector2(27, 569)
+scale = Vector2(2.93776, 2.93776)
 
 [node name="Camera2D" type="Camera2D" parent="NodosEscena/Personaje"]
 process_callback = 0
