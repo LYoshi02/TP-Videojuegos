@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dn53f0oghdjow"]
+[gd_scene load_steps=8 format=3 uid="uid://dn53f0oghdjow"]
 
 [ext_resource type="Script" uid="uid://cdpccmv5hkto5" path="res://pantallas/menu_niveles/menu_niveles.gd" id="1_1vcou"]
 [ext_resource type="PackedScene" uid="uid://sddk5xqkdc4t" path="res://ui/boton.tscn" id="1_3jpul"]
@@ -6,7 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://m5wbok3qmbim" path="res://ui/seleccion_nivel/seleccion_nivel.tscn" id="4_nougm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwq62"]
-bg_color = Color(0.165656, 0.165657, 0.165655, 1)
+bg_color = Color(0.0313726, 0.0784314, 0.0588235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nougm"]
+bg_color = Color(0.105882, 0.262745, 0.196078, 1)
+shadow_color = Color(0, 0, 0, 0.0980392)
+shadow_size = 10
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6rgov"]
+bg_color = Color(0.176471, 0.415686, 0.309804, 1)
 
 [node name="MenuNiveles" type="Control"]
 layout_mode = 3
@@ -26,37 +35,92 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kwq62")
 
-[node name="VolverBoton" parent="." instance=ExtResource("1_3jpul")]
+[node name="Panel2" type="Panel" parent="."]
 layout_mode = 1
-offset_left = 24.0
-offset_top = 24.0
-offset_right = 152.0
-offset_bottom = 66.0
-text = "Volver"
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -184.0
+offset_right = 500.0
+offset_bottom = 264.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nougm")
 
-[node name="Titulo" parent="." instance=ExtResource("1_o885e")]
+[node name="Panel" type="Panel" parent="Panel2"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -434.5
-offset_top = 80.0
-offset_right = 434.5
-offset_bottom = 191.0
+offset_left = -200.0
+offset_top = -40.0
+offset_right = 200.0
+offset_bottom = 40.0
 grow_horizontal = 2
-text = "Niveles"
+theme_override_styles/panel = SubResource("StyleBoxFlat_6rgov")
 
-[node name="Niveles" type="Node" parent="."]
+[node name="Titulo" parent="Panel2/Panel" instance=ExtResource("1_o885e")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.5
+offset_top = -40.0
+offset_right = 116.5
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "NIVELES"
 
-[node name="SeleccionNivel1" parent="Niveles" instance=ExtResource("4_nougm")]
+[node name="Niveles" type="Control" parent="Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SeleccionNivel1" parent="Panel2/Niveles" instance=ExtResource("4_nougm")]
+offset_left = -501.0
+offset_top = -370.0
+offset_right = -501.0
+offset_bottom = -370.0
+pivot_offset = Vector2(248, 253)
 total_monedas = 3
 id_nivel = 1
 
-[node name="SeleccionNivel2" parent="Niveles" instance=ExtResource("4_nougm")]
-offset_left = 274.0
-offset_right = 274.0
+[node name="SeleccionNivel2" parent="Panel2/Niveles" instance=ExtResource("4_nougm")]
+offset_left = -227.0
+offset_top = -370.0
+offset_right = -227.0
+offset_bottom = -370.0
+pivot_offset = Vector2(-26, 253)
 total_monedas = 12
 id_nivel = 2
 id_nivel_anterior = 1
+
+[node name="SeleccionNivel3" parent="Panel2/Niveles" instance=ExtResource("4_nougm")]
+offset_left = 49.0
+offset_top = -370.0
+offset_right = 49.0
+offset_bottom = -370.0
+pivot_offset = Vector2(-302, 253)
+id_nivel = 3
+id_nivel_anterior = 3
+
+[node name="VolverBoton" parent="." instance=ExtResource("1_3jpul")]
+layout_mode = 1
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 174.0
+offset_bottom = 74.0
+text = "VOLVER"
 
 [connection signal="pressed" from="VolverBoton" to="." method="_on_volver_boton_pressed"]

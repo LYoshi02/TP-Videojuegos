@@ -145,6 +145,7 @@ position_smoothing_enabled = true
 
 [node name="HUD" parent="." instance=ExtResource("7_h3ayw")]
 unique_name_in_owner = true
+visible = false
 
 [node name="Finish" parent="." instance=ExtResource("8_pi4a7")]
 position = Vector2(1075, 595)

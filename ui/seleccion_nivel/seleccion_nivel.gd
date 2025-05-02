@@ -12,7 +12,7 @@ func _ready():
 	var progreso = GLOBAL.obtener_progreso_nivel(id_nivel)
 	completado_label.text = "Completado: " + str(progreso.completado)
 	monedas_label.text = "Monedas: " + str(int(progreso.monedas)).pad_zeros(2) + "/" + str(int(total_monedas)).pad_zeros(2)
-	nivel_boton. text = "Nivel " + str(id_nivel)
+	nivel_boton.text = str(id_nivel)
 
 	if id_nivel_anterior > 0:
 		var progreso_nivel_anterior = GLOBAL.obtener_progreso_nivel(id_nivel_anterior)

@@ -141,12 +141,10 @@ script = ExtResource("1_whg8i")
 sprite_frames = SubResource("SpriteFrames_s5i2y")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.536067
+frame_progress = 0.469291
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_nmoq4")
 
 [node name="TimerSalto" type="Timer" parent="."]
-
-[connection signal="sprite_frames_changed" from="AnimatedSprite2D" to="." method="_on_sprite_frame_changed"]

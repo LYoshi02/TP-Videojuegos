@@ -1,49 +1,54 @@
-[gd_scene load_steps=5 format=3 uid="uid://sddk5xqkdc4t"]
+[gd_scene load_steps=8 format=3 uid="uid://sddk5xqkdc4t"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n4pas"]
+[ext_resource type="FontFile" uid="uid://br0ox30rd3ddl" path="res://assets/fuentes/merriweather_sans/MerriweatherSans-VariableFont_wght.ttf" id="1_dplwg"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mi6dp"]
-bg_color = Color(0.899258, 0.899258, 0.899258, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_color = Color(0, 0, 0, 0.203922)
-shadow_size = 5
-shadow_offset = Vector2(0, 3.41)
+[sub_resource type="FontVariation" id="FontVariation_efxx4"]
+base_font = ExtResource("1_dplwg")
+variation_opentype = {
+2003265652: 600
+}
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhj8v"]
-bg_color = Color(0.733005, 0.733005, 0.733005, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_color = Color(0, 0, 0, 0.203922)
-shadow_size = 5
-shadow_offset = Vector2(0, 3.41)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dplwg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uvtp8"]
+bg_color = Color(0.0313726, 0.109804, 0.0823529, 1)
+shadow_color = Color(0, 0, 0, 0.0392157)
+shadow_size = 10
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dplwg"]
+bg_color = Color(0.25098, 0.568627, 0.423529, 1)
+shadow_color = Color(0, 0, 0, 0.0392157)
+shadow_size = 10
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opgb7"]
+bg_color = Color(0.25098, 0.568627, 0.423529, 1)
+shadow_color = Color(0, 0, 0, 0.0392157)
+shadow_size = 10
+shadow_offset = Vector2(0, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3q610"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_color = Color(0, 0, 0, 0.203922)
-shadow_size = 5
-shadow_offset = Vector2(0, 3.41)
+bg_color = Color(0.176471, 0.415686, 0.309804, 1)
+shadow_color = Color(0, 0, 0, 0.0392157)
+shadow_size = 10
+shadow_offset = Vector2(0, 2)
 
 [node name="Boton" type="Button"]
 offset_right = 128.0
-offset_bottom = 42.0
+offset_bottom = 80.0
 size_flags_vertical = 3
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxEmpty_n4pas")
-theme_override_styles/hover = SubResource("StyleBoxFlat_mi6dp")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_rhj8v")
+theme_override_colors/font_disabled_color = Color(0.847059, 0.952941, 0.862745, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.847059, 0.952941, 0.862745, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_efxx4")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dplwg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_uvtp8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dplwg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_opgb7")
 theme_override_styles/normal = SubResource("StyleBoxFlat_3q610")
-text = "Text"
+text = "TEXT"
