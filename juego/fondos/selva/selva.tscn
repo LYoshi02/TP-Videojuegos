@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqbhdgf7qlc7a"]
+
+[ext_resource type="Texture2D" uid="uid://itexfh5kpxn7" path="res://assets/fondos/selva/plx-1.png" id="1_28awc"]
+[ext_resource type="Script" uid="uid://djw4gxd5bm4jl" path="res://juego/fondos/selva/selva.gd" id="1_kgl5r"]
+[ext_resource type="Texture2D" uid="uid://b04j1q4dv6w4v" path="res://assets/fondos/selva/plx-2.png" id="2_kgl5r"]
+[ext_resource type="Texture2D" uid="uid://tt7xaewnbivy" path="res://assets/fondos/selva/plx-3.png" id="3_godnf"]
+[ext_resource type="Texture2D" uid="uid://c6xaol6bcgyb0" path="res://assets/fondos/selva/plx-4.png" id="4_x08p7"]
+[ext_resource type="Texture2D" uid="uid://by7t61hvajc6v" path="res://assets/fondos/selva/plx-5.png" id="5_soj55"]
+
+[node name="FondoSelva" type="Node2D"]
+script = ExtResource("1_kgl5r")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="FondoVerde" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/FondoVerde"]
+scale = Vector2(3, 3)
+texture = ExtResource("1_28awc")
+centered = false
+
+[node name="ArbolesVerdeClaro" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.85, 1)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ArbolesVerdeClaro"]
+scale = Vector2(3, 3)
+texture = ExtResource("2_kgl5r")
+centered = false
+
+[node name="ArbolesVerde" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.9, 1)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ArbolesVerde"]
+scale = Vector2(3, 3)
+texture = ExtResource("3_godnf")
+centered = false
+
+[node name="ArbolesVerde2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.95, 1)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ArbolesVerde2"]
+scale = Vector2(3, 3)
+texture = ExtResource("4_x08p7")
+centered = false
+
+[node name="ArbolesVerde3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(0, -2)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ArbolesVerde3"]
+scale = Vector2(3, 3)
+texture = ExtResource("5_soj55")
+centered = false
