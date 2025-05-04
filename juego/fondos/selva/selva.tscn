@@ -21,7 +21,8 @@ texture = ExtResource("1_28awc")
 centered = false
 
 [node name="ArbolesVerdeClaro" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.85, 1)
+position = Vector2(0, -2)
+motion_scale = Vector2(0.85, 0)
 motion_mirroring = Vector2(1152, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ArbolesVerdeClaro"]
@@ -30,7 +31,7 @@ texture = ExtResource("2_kgl5r")
 centered = false
 
 [node name="ArbolesVerde" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.9, 1)
+motion_scale = Vector2(0.85, 0)
 motion_mirroring = Vector2(1152, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ArbolesVerde"]
@@ -39,7 +40,7 @@ texture = ExtResource("3_godnf")
 centered = false
 
 [node name="ArbolesVerde2" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.95, 1)
+motion_scale = Vector2(0.85, 0)
 motion_mirroring = Vector2(1152, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ArbolesVerde2"]
@@ -49,6 +50,7 @@ centered = false
 
 [node name="ArbolesVerde3" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(0, -2)
+motion_scale = Vector2(0.85, 0)
 motion_mirroring = Vector2(1152, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ArbolesVerde3"]

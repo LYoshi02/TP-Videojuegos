@@ -93,7 +93,7 @@ position = Vector2(76, 325)
 scale = Vector2(2.93776, 2.93776)
 
 [node name="Camera2D" type="Camera2D" parent="NodosEscena/Personaje"]
-position = Vector2(0, -1.02119)
+position = Vector2(0.680791, -3.8147e-06)
 process_callback = 0
 position_smoothing_enabled = true
 
