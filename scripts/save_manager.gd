@@ -1,7 +1,7 @@
 extends Node
 
 # Estructura diccionario:
-# { "niveles": { "1": {"completado": true, "monedas": 25} } }
+# { "niveles": { "1": {"completado": true, "monedas": 25, "estrellas": 3} } }
 var progreso = obtener_estado_inicial_progreso()
 var ruta_guardado = "user://progreso_jugador.save"
 
@@ -30,7 +30,7 @@ func cargar_progreso():
 			progreso = result
 		archivo.close()
 
-func actualizar_nivel(nivel_id: int, monedas_recolectadas: int):
+func actualizar_nivel(nivel_id: int, monedas_recolectadas: int, estrellas: int):
 	if not progreso["niveles"].has(str(nivel_id)):
 		progreso["niveles"][str(nivel_id)] = {}
 	
@@ -40,13 +40,20 @@ func actualizar_nivel(nivel_id: int, monedas_recolectadas: int):
 			progreso["niveles"][str(nivel_id)]["monedas"] = monedas_recolectadas
 	else:
 		progreso["niveles"][str(nivel_id)]["monedas"] = monedas_recolectadas
+		
+	if progreso["niveles"][str(nivel_id)].has("estrellas"):
+		if estrellas > progreso["niveles"][str(nivel_id)]["estrellas"]:
+			progreso["niveles"][str(nivel_id)]["estrellas"] = estrellas
+	else:
+		progreso["niveles"][str(nivel_id)]["estrellas"] = estrellas
+	
 	guardar_progreso()
 
 func obtener_progreso_nivel(nivel_id: int):
 	if progreso["niveles"].has(str(nivel_id)):
 		return progreso["niveles"][str(nivel_id)]
 	else:
-		return { "completado": false, "monedas": 0 }
+		return { "completado": false, "monedas": 0, "estrellas": 0 }
 
 func borrar_progreso():
 	if FileAccess.file_exists(ruta_guardado):

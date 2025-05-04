@@ -5,7 +5,9 @@ extends Node
 @onready var personaje: CharacterBody2D = %Personaje
 @onready var monedas: Node = %Monedas
 @onready var hud: CanvasLayer = %HUD
+@onready var fin_nivel: CanvasLayer = %FinNivel
 
+var muertes = 0
 var vidas = 3
 
 var monedas_totales: int = 0
@@ -39,6 +41,7 @@ func reducir_vida():
 	
 	if vidas <= 0:
 		reaparecer_jugador(personaje)
+		muertes += 1
 		vidas = 3
 		hud.actualizar_vidas(vidas)
 
@@ -56,6 +59,15 @@ func reaparecer_jugador(jugador: Node2D):
 		print("No hay checkpoint registrado. Reapareciendo en el inicio.")
 		jugador.global_position = posicion_inicial
 
+func calcular_estrellas_conseguidas():
+	var estrellas = 1
+	if monedas_recolectadas == monedas_totales:
+		estrellas += 1
+	if muertes == 0:
+		estrellas += 1
+	return estrellas
+
 func finalizar_nivel():
-	GLOBAL.actualizar_nivel(id_nivel, monedas_recolectadas)
-	get_tree().call_deferred("change_scene_to_file", GLOBAL.PANTALLAS["MENU_PRINCIPAL"])
+	var estrellas_conseguidas = calcular_estrellas_conseguidas()
+	GLOBAL.actualizar_nivel(id_nivel, monedas_recolectadas, estrellas_conseguidas)
+	fin_nivel.mostrar_pantalla_fin_nivel(monedas_recolectadas, monedas_totales, muertes, estrellas_conseguidas)

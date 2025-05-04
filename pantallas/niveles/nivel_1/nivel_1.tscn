@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://yook7105bj3k"]
+[gd_scene load_steps=13 format=4 uid="uid://yook7105bj3k"]
 
 [ext_resource type="PackedScene" uid="uid://csd5xp48x83s2" path="res://ui/hud/hud.tscn" id="1_73ecu"]
 [ext_resource type="Script" uid="uid://cgi4n8uj2g5cd" path="res://scripts/game_manager.gd" id="1_jucfr"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bjr40lojnxc7b" path="res://juego/objetos/checkpoint/checkpoint.tscn" id="6_ycegj"]
 [ext_resource type="PackedScene" uid="uid://cmkyl52ssxecm" path="res://juego/objetos/mate/mate.tscn" id="8_lyfj1"]
 [ext_resource type="PackedScene" uid="uid://bqbhdgf7qlc7a" path="res://juego/fondos/selva/selva.tscn" id="9_ni65d"]
+[ext_resource type="PackedScene" uid="uid://285hmeu6l5pc" path="res://pantallas/fin_nivel/fin_nivel.tscn" id="10_py22g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lyfj1"]
 texture = ExtResource("5_ycegj")
@@ -140,6 +141,8 @@ scale = Vector2(3.248, 3.248)
 
 [node name="HUD" parent="." instance=ExtResource("1_73ecu")]
 unique_name_in_owner = true
-visible = false
+
+[node name="FinNivel" parent="." instance=ExtResource("10_py22g")]
+unique_name_in_owner = true
 
 [connection signal="ready" from="HUD" to="GameManager" method="_on_hud_ready"]

@@ -21,8 +21,8 @@ func guardar_progreso():
 func cargar_progreso():
 	SaveManager.cargar_progreso()
 
-func actualizar_nivel(nivel_id: int, monedas: int):
-	SaveManager.actualizar_nivel(nivel_id, monedas)
+func actualizar_nivel(nivel_id: int, monedas: int, estrellas: int):
+	SaveManager.actualizar_nivel(nivel_id, monedas, estrellas)
 
 func obtener_progreso_nivel(nivel_id: int) -> Dictionary:
 	return SaveManager.obtener_progreso_nivel(nivel_id)

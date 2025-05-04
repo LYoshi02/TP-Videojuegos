@@ -1,0 +1,142 @@
+[gd_scene load_steps=11 format=3 uid="uid://285hmeu6l5pc"]
+
+[ext_resource type="Script" uid="uid://coj7g3crs6raa" path="res://pantallas/fin_nivel/fin_nivel.gd" id="1_lu7ap"]
+[ext_resource type="PackedScene" uid="uid://b4ctirjw1xq53" path="res://ui/titulo.tscn" id="2_nd3yq"]
+[ext_resource type="PackedScene" uid="uid://b348a1qhcxm7v" path="res://juego/objetos/estrellas/estrellas.tscn" id="3_lu7ap"]
+[ext_resource type="FontFile" uid="uid://br0ox30rd3ddl" path="res://assets/fuentes/merriweather_sans/MerriweatherSans-VariableFont_wght.ttf" id="4_coats"]
+[ext_resource type="PackedScene" uid="uid://sddk5xqkdc4t" path="res://ui/boton.tscn" id="5_ckscw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iicj2"]
+bg_color = Color(0, 0, 0, 0.686275)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ugior"]
+bg_color = Color(0.105882, 0.262745, 0.196078, 1)
+shadow_color = Color(0, 0, 0, 0.0980392)
+shadow_size = 10
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6f81f"]
+bg_color = Color(0.176471, 0.415686, 0.309804, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_qkbud"]
+base_font = ExtResource("4_coats")
+
+[sub_resource type="FontVariation" id="FontVariation_iicj2"]
+base_font = ExtResource("4_coats")
+
+[node name="FinNivel" type="CanvasLayer"]
+script = ExtResource("1_lu7ap")
+
+[node name="FinNivelPanel" type="Panel" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iicj2")
+
+[node name="Panel" type="Panel" parent="FinNivelPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -193.0
+offset_right = 225.0
+offset_bottom = 257.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ugior")
+
+[node name="Panel2" type="Panel" parent="FinNivelPanel/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -175.0
+offset_top = -40.0
+offset_right = 175.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6f81f")
+
+[node name="Titulo" parent="FinNivelPanel/Panel/Panel2" instance=ExtResource("2_nd3yq")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 34
+text = "NIVEL COMPLETADO"
+
+[node name="MarginContainer" type="MarginContainer" parent="FinNivelPanel/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FinNivelPanel/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="FinNivelPanel/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FinNivelPanel/Panel/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 25
+
+[node name="EstrellasContenedor" parent="FinNivelPanel/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_lu7ap")]
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer3" type="VBoxContainer" parent="FinNivelPanel/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+texture_filter = 2
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MonedasLabel" type="Label" parent="FinNivelPanel/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+texture_filter = 2
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_qkbud")
+theme_override_font_sizes/font_size = 24
+text = "MONEDAS: 00/00"
+
+[node name="MuertesLabel" type="Label" parent="FinNivelPanel/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+texture_filter = 2
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_iicj2")
+theme_override_font_sizes/font_size = 24
+text = "MUERTES: 00"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="FinNivelPanel/Panel/MarginContainer/VBoxContainer"]
+texture_filter = 2
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+alignment = 1
+
+[node name="ContinuarBoton" parent="FinNivelPanel/Panel/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("5_ckscw")]
+process_mode = 3
+texture_filter = 2
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CONTINUAR"
+
+[connection signal="pressed" from="FinNivelPanel/Panel/MarginContainer/VBoxContainer/HBoxContainer2/ContinuarBoton" to="." method="_on_continuar_boton_pressed"]
