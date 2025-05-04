@@ -9,7 +9,7 @@ var shader_blanco_code := """
 
 	void fragment() {
 		vec4 tex_color = texture(TEXTURE, UV);
-		COLOR = vec4(1.0, 1.0, 1.0, tex_color.a);
+		COLOR = vec4(0.031, 0.110, 0.082, tex_color.a);
 	}
 """
 
