@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp45uply0mfm4"
-path="res://.godot/imported/Star 2.png-63d255e3f3ead68e30ba4ef50da3b102.ctex"
+uid="uid://bxjqom5qb7sfl"
+path="res://.godot/imported/gaucho.svg-c4663a5ebdc777d2eb73d025b57ea1a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/imagenes/estrella/Star 2.png"
-dest_files=["res://.godot/imported/Star 2.png-63d255e3f3ead68e30ba4ef50da3b102.ctex"]
+source_file="res://assets/imagenes/gaucho.svg"
+dest_files=["res://.godot/imported/gaucho.svg-c4663a5ebdc777d2eb73d025b57ea1a7.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

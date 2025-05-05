@@ -35,6 +35,7 @@ shadow_size = 10
 shadow_offset = Vector2(0, 2)
 
 [node name="Boton" type="Button"]
+texture_filter = 2
 offset_right = 128.0
 offset_bottom = 80.0
 size_flags_vertical = 3

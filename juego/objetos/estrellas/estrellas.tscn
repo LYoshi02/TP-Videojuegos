@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b348a1qhcxm7v"]
 
 [ext_resource type="Script" uid="uid://3tl5v6bsi5li" path="res://juego/objetos/estrellas/estrellas.gd" id="1_776pf"]
-[ext_resource type="Texture2D" uid="uid://s48qjahy2e54" path="res://assets/imagenes/estrella/star (2).png" id="1_j4j3j"]
+[ext_resource type="Texture2D" uid="uid://bp45uply0mfm4" path="res://assets/imagenes/estrella.png" id="1_j4j3j"]
 
 [node name="HBoxContainer" type="HBoxContainer"]
 texture_filter = 2

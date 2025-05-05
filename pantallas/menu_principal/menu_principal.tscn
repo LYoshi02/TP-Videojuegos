@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://tuk1qbeie8yx"]
+[gd_scene load_steps=8 format=3 uid="uid://tuk1qbeie8yx"]
 
 [ext_resource type="Script" uid="uid://b0y5xgqr4x33" path="res://pantallas/menu_principal/menu_principal.gd" id="1_rqcxr"]
 [ext_resource type="PackedScene" uid="uid://sddk5xqkdc4t" path="res://ui/boton.tscn" id="3_th5i5"]
+[ext_resource type="Texture2D" uid="uid://bxjqom5qb7sfl" path="res://assets/imagenes/gaucho.svg" id="4_co1m1"]
 [ext_resource type="FontFile" uid="uid://drjlh7vyn5bff" path="res://assets/fuentes/crimson_pro/CrimsonPro-VariableFont_wght.ttf" id="4_glt1t"]
+[ext_resource type="Texture2D" uid="uid://cww6a43l3mpv7" path="res://assets/imagenes/mate.svg" id="5_glt1t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2ach"]
 bg_color = Color(0.105882, 0.262745, 0.196078, 1)
@@ -34,6 +36,8 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x2ach")
 
 [node name="Titulo" type="Label" parent="."]
+z_index = 5
+texture_filter = 2
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -55,6 +59,7 @@ MATE PERFECTO"
 horizontal_alignment = 1
 
 [node name="ContenedorBotones" type="VBoxContainer" parent="."]
+texture_filter = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -84,6 +89,26 @@ text = "CONFIGURACION"
 [node name="SalirBoton" parent="ContenedorBotones" instance=ExtResource("3_th5i5")]
 layout_mode = 2
 text = "SALIR"
+
+[node name="Decoracion" type="Node" parent="."]
+
+[node name="Gaucho" type="TextureRect" parent="Decoracion"]
+texture_filter = 2
+offset_left = 19.0
+offset_top = 115.0
+offset_right = 418.0
+offset_bottom = 735.0
+scale = Vector2(0.858006, 0.858006)
+texture = ExtResource("4_co1m1")
+
+[node name="Mate" type="TextureRect" parent="Decoracion"]
+texture_filter = 2
+offset_left = 928.0
+offset_top = 316.0
+offset_right = 1190.0
+offset_bottom = 703.0
+scale = Vector2(0.855457, 0.855457)
+texture = ExtResource("5_glt1t")
 
 [connection signal="pressed" from="ContenedorBotones/NivelesBoton" to="." method="_on_niveles_boton_pressed"]
 [connection signal="pressed" from="ContenedorBotones/ConfiguracionBoton" to="." method="_on_configuracion_boton_pressed"]
