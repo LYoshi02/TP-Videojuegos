@@ -10,6 +10,7 @@ variation_opentype = {
 spacing_glyph = 2
 
 [node name="Titulo" type="Label"]
+texture_filter = 2
 offset_right = 869.0
 offset_bottom = 111.0
 theme_override_colors/font_color = Color(0.847059, 0.952941, 0.862745, 1)
