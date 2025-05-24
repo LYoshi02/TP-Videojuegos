@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://yook7105bj3k"]
+[gd_scene load_steps=15 format=4 uid="uid://yook7105bj3k"]
 
 [ext_resource type="PackedScene" uid="uid://csd5xp48x83s2" path="res://ui/hud/hud.tscn" id="1_73ecu"]
 [ext_resource type="Script" uid="uid://cgi4n8uj2g5cd" path="res://scripts/game_manager.gd" id="1_jucfr"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bjr40lojnxc7b" path="res://juego/objetos/checkpoint/checkpoint.tscn" id="6_ycegj"]
 [ext_resource type="PackedScene" uid="uid://cmkyl52ssxecm" path="res://juego/objetos/mate/mate.tscn" id="8_lyfj1"]
 [ext_resource type="PackedScene" uid="uid://bqbhdgf7qlc7a" path="res://juego/fondos/selva/selva.tscn" id="9_ni65d"]
+[ext_resource type="PackedScene" uid="uid://bht0yiyvbfqc8" path="res://juego/objetos/pinchos/pinchos.tscn" id="9_vgmtr"]
 [ext_resource type="PackedScene" uid="uid://285hmeu6l5pc" path="res://pantallas/fin_nivel/fin_nivel.tscn" id="10_py22g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lyfj1"]
@@ -149,6 +150,16 @@ id_progreso = 1
 position = Vector2(927, 350)
 scale = Vector2(1.88401, 1.88401)
 id_progreso = 2
+
+[node name="Pinchos" type="Node" parent="NodosEscena"]
+
+[node name="Pinchos" parent="NodosEscena/Pinchos" instance=ExtResource("9_vgmtr")]
+position = Vector2(770, 365)
+scale = Vector2(1.47513, 1.47513)
+
+[node name="Pinchos2" parent="NodosEscena/Pinchos" instance=ExtResource("9_vgmtr")]
+position = Vector2(817, 365)
+scale = Vector2(1.47513, 1.47513)
 
 [node name="Finish" parent="NodosEscena" instance=ExtResource("8_lyfj1")]
 position = Vector2(1124, 351)
