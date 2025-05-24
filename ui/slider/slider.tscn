@@ -1,11 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://deb6ahist7ktm"]
+[gd_scene load_steps=8 format=3 uid="uid://deb6ahist7ktm"]
 
 [ext_resource type="Script" uid="uid://bpeoevy3le6c" path="res://ui/slider/slider.gd" id="1_nljcs"]
+
+[sub_resource type="Gradient" id="Gradient_nljcs"]
+colors = PackedColorArray(0.176471, 0.415686, 0.309804, 1, 0.176471, 0.415686, 0.309804, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fuwew"]
+gradient = SubResource("Gradient_nljcs")
+width = 22
+height = 22
+
+[sub_resource type="Gradient" id="Gradient_fuwew"]
+offsets = PackedFloat32Array(0.00497512, 1)
+colors = PackedColorArray(0.25098, 0.568627, 0.423529, 1, 0.25098, 0.568627, 0.423529, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_64gkl"]
+gradient = SubResource("Gradient_fuwew")
+width = 22
+height = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nljcs"]
+bg_color = Color(0.0313726, 0.109804, 0.0823529, 1)
+border_width_top = 6
+border_width_bottom = 6
+border_color = Color(0.0313726, 0.109804, 0.0823529, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fuwew"]
+bg_color = Color(0.847059, 0.952941, 0.862745, 1)
+border_width_top = 6
+border_width_bottom = 6
+border_color = Color(0.847059, 0.952941, 0.862745, 1)
 
 [node name="HSlider" type="HSlider"]
 texture_filter = 2
 offset_right = 44.0
 offset_bottom = 16.0
+theme_override_icons/grabber = SubResource("GradientTexture2D_fuwew")
+theme_override_icons/grabber_highlight = SubResource("GradientTexture2D_64gkl")
+theme_override_styles/slider = SubResource("StyleBoxFlat_nljcs")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_fuwew")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_fuwew")
 max_value = 1.0
 step = 0.001
 script = ExtResource("1_nljcs")
