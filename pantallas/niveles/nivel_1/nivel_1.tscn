@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=4 uid="uid://yook7105bj3k"]
+[gd_scene load_steps=16 format=4 uid="uid://yook7105bj3k"]
 
 [ext_resource type="PackedScene" uid="uid://csd5xp48x83s2" path="res://ui/hud/hud.tscn" id="1_73ecu"]
 [ext_resource type="Script" uid="uid://cgi4n8uj2g5cd" path="res://scripts/game_manager.gd" id="1_jucfr"]
+[ext_resource type="Script" uid="uid://c1vxkon8bmail" path="res://pantallas/niveles/nivel_1/nivel_1.gd" id="1_xduqt"]
 [ext_resource type="PackedScene" uid="uid://du875us3dm6vj" path="res://juego/personaje/personaje.tscn" id="3_4oxjr"]
 [ext_resource type="PackedScene" uid="uid://b4vlb5eg0bvv2" path="res://juego/objetos/moneda/moneda.tscn" id="5_4gsg4"]
 [ext_resource type="Texture2D" uid="uid://bqsavssw6cp1s" path="res://assets/sprites/tilesets/tileset_forest.png" id="5_ycegj"]
@@ -77,6 +78,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_lyfj1")
 
 [node name="Nivel1" type="Node2D"]
+script = ExtResource("1_xduqt")
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true

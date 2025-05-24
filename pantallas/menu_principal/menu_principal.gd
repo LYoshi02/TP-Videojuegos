@@ -8,6 +8,7 @@ extends Control
 
 func _ready() -> void:
 	GLOBAL.cargar_progreso()
+	ReproductorMusica.reproducir_musica(GLOBAL.MUSICAS["MENU_PRINCIPAL"])
 
 func _on_niveles_boton_pressed() -> void:
 	get_tree().change_scene_to_file(GLOBAL.PANTALLAS["MENU_NIVELES"])

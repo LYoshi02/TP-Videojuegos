@@ -16,6 +16,16 @@ const GRUPOS = {
 	"ROMPIBLE": "rompible"
 }
 
+const MUSICAS = {
+	"MENU_PRINCIPAL": preload("res://assets/audio/musica/menu_principal.mp3"),
+	"NIVEL_1": preload("res://assets/audio/musica/nivel_1.mp3")
+}
+
+const EFECTOS_SONIDO = {
+	"MONEDA": preload("res://assets/audio/sfx/moneda.wav"),
+	"SALTO": preload("res://assets/audio/sfx/salto.wav")
+}
+
 # Lógica de Guardado
 var SaveManager = preload("res://scripts/save_manager.gd").new()
 
