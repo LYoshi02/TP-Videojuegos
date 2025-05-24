@@ -1,14 +1,21 @@
-[gd_scene load_steps=17 format=3 uid="uid://csd5xp48x83s2"]
+[gd_scene load_steps=19 format=3 uid="uid://csd5xp48x83s2"]
 
 [ext_resource type="Script" uid="uid://rcjhx6ffcess" path="res://ui/hud/pausa.gd" id="1_e0nub"]
 [ext_resource type="Script" uid="uid://cyvahdqdbxwti" path="res://ui/hud/hud.gd" id="1_imuuq"]
 [ext_resource type="Texture2D" uid="uid://dttx8sc650qf4" path="res://assets/imagenes/moneda.png" id="2_imuuq"]
 [ext_resource type="PackedScene" uid="uid://b4ctirjw1xq53" path="res://ui/titulo.tscn" id="2_w75iv"]
+[ext_resource type="FontFile" uid="uid://br0ox30rd3ddl" path="res://assets/fuentes/merriweather_sans/MerriweatherSans-VariableFont_wght.ttf" id="3_gfles"]
 [ext_resource type="PackedScene" uid="uid://sddk5xqkdc4t" path="res://ui/boton.tscn" id="3_imuuq"]
-[ext_resource type="Texture2D" uid="uid://cxjnb17y6hm1i" path="res://assets/imagenes/corazon.png" id="3_kwc50"]
+[ext_resource type="Texture2D" uid="uid://batb4gmhxhy0c" path="res://assets/imagenes/heart.png" id="3_o2lis"]
 [ext_resource type="Texture2D" uid="uid://clf73hllkd8vu" path="res://assets/imagenes/arrow.png" id="7_o2lis"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_imuuq"]
+
+[sub_resource type="FontVariation" id="FontVariation_aixkq"]
+base_font = ExtResource("3_gfles")
+variation_opentype = {
+2003265652: 700
+}
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kwc50"]
 
@@ -70,9 +77,13 @@ expand_mode = 2
 
 [node name="MonedaLabel" type="Label" parent="MonedasPanel/HBoxContainer"]
 texture_filter = 2
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "00/00"
+theme_override_fonts/font = SubResource("FontVariation_aixkq")
+theme_override_font_sizes/font_size = 32
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VidasPanel" type="Panel" parent="."]
 offset_left = 41.0
@@ -94,17 +105,17 @@ alignment = 1
 
 [node name="Vida1" type="TextureRect" parent="VidasPanel/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("3_kwc50")
+texture = ExtResource("3_o2lis")
 expand_mode = 2
 
 [node name="Vida2" type="TextureRect" parent="VidasPanel/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("3_kwc50")
+texture = ExtResource("3_o2lis")
 expand_mode = 2
 
 [node name="Vida3" type="TextureRect" parent="VidasPanel/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("3_kwc50")
+texture = ExtResource("3_o2lis")
 expand_mode = 2
 
 [node name="Pausa" type="Node" parent="."]
