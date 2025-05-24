@@ -1,0 +1,114 @@
+[gd_scene load_steps=8 format=3 uid="uid://8y047fvxb73e"]
+
+[ext_resource type="Script" uid="uid://h7afonhidq6v" path="res://pantallas/pausa/pausa.gd" id="1_ms88c"]
+[ext_resource type="PackedScene" uid="uid://b4ctirjw1xq53" path="res://ui/titulo.tscn" id="2_eiekg"]
+[ext_resource type="PackedScene" uid="uid://sddk5xqkdc4t" path="res://ui/boton.tscn" id="3_8watp"]
+[ext_resource type="PackedScene" uid="uid://cab0166d3lquy" path="res://pantallas/pausa/configuracion/configuracion.tscn" id="4_eiekg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bor4o"]
+bg_color = Color(0, 0, 0, 0.686275)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stvm3"]
+bg_color = Color(0.105882, 0.262745, 0.196078, 1)
+shadow_color = Color(0, 0, 0, 0.0980392)
+shadow_size = 10
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_onroj"]
+bg_color = Color(0.176471, 0.415686, 0.309804, 1)
+
+[node name="PausaPanel" type="Panel"]
+process_mode = 3
+texture_filter = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bor4o")
+script = ExtResource("1_ms88c")
+
+[node name="PanelPrincipal" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -193.0
+offset_right = 225.0
+offset_bottom = 257.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_stvm3")
+
+[node name="Panel2" type="Panel" parent="PanelPrincipal"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -175.0
+offset_top = -40.0
+offset_right = 175.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_onroj")
+
+[node name="TituloPausa" parent="PanelPrincipal/Panel2" instance=ExtResource("2_eiekg")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_right = 0.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PAUSA"
+
+[node name="ContenedorBotones" type="VBoxContainer" parent="PanelPrincipal"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -144.0
+offset_right = 150.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="ContinuarBoton" parent="PanelPrincipal/ContenedorBotones" instance=ExtResource("3_8watp")]
+layout_mode = 2
+text = "CONTINUAR"
+
+[node name="NivelesBoton" parent="PanelPrincipal/ContenedorBotones" instance=ExtResource("3_8watp")]
+layout_mode = 2
+text = "NIVELES"
+
+[node name="ConfiguracionBoton" parent="PanelPrincipal/ContenedorBotones" instance=ExtResource("3_8watp")]
+process_mode = 3
+layout_mode = 2
+text = "CONFIGURACION"
+
+[node name="SalirBoton" parent="PanelPrincipal/ContenedorBotones" instance=ExtResource("3_8watp")]
+layout_mode = 2
+text = "SALIR"
+
+[node name="PanelConfiguracion" parent="." instance=ExtResource("4_eiekg")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[connection signal="pressed" from="PanelPrincipal/ContenedorBotones/ContinuarBoton" to="." method="_on_continuar_boton_pressed"]
+[connection signal="pressed" from="PanelPrincipal/ContenedorBotones/NivelesBoton" to="." method="_on_niveles_boton_pressed"]
+[connection signal="pressed" from="PanelPrincipal/ContenedorBotones/ConfiguracionBoton" to="." method="_on_configuracion_boton_pressed"]
+[connection signal="pressed" from="PanelPrincipal/ContenedorBotones/SalirBoton" to="." method="_on_salir_boton_pressed"]

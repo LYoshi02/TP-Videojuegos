@@ -1,29 +1,29 @@
-extends Node
+extends Panel
 
-@onready var pausa_panel: Panel = %PausaPanel
+@onready var panel_configuracion: Panel = $PanelConfiguracion
 
 func _process(_delta):
 	var esc_pressed = Input.is_action_just_pressed("pausa")
 	if esc_pressed == true:
 		if get_tree().paused:
 			get_tree().paused = false;
-			pausa_panel.hide()
+			hide()
+			panel_configuracion.hide()
 		else:
 			get_tree().paused = true;
-			pausa_panel.show()
+			show()
 
 func _on_continuar_boton_pressed() -> void:
 	get_tree().paused = false;
-	pausa_panel.hide()
+	hide()
 
 func _on_niveles_boton_pressed() -> void:
 	get_tree().paused = false;
 	get_tree().change_scene_to_file(GLOBAL.PANTALLAS["MENU_NIVELES"])
 
-func _on_menu_principal_boton_pressed() -> void:
-	get_tree().paused = false;
-	get_tree().change_scene_to_file(GLOBAL.PANTALLAS["MENU_PRINCIPAL"])
+func _on_configuracion_boton_pressed() -> void:
+	panel_configuracion.show()
 
 func _on_salir_boton_pressed() -> void:
 	get_tree().paused = false;
-	get_tree().quit()
+	get_tree().change_scene_to_file(GLOBAL.PANTALLAS["MENU_PRINCIPAL"])

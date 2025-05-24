@@ -1,0 +1,130 @@
+[gd_scene load_steps=10 format=3 uid="uid://cab0166d3lquy"]
+
+[ext_resource type="Script" uid="uid://cwaecf7ijh1f8" path="res://pantallas/pausa/configuracion/configuracion.gd" id="1_gn6kl"]
+[ext_resource type="PackedScene" uid="uid://b4ctirjw1xq53" path="res://ui/titulo.tscn" id="1_m7156"]
+[ext_resource type="FontFile" uid="uid://br0ox30rd3ddl" path="res://assets/fuentes/merriweather_sans/MerriweatherSans-VariableFont_wght.ttf" id="2_gn6kl"]
+[ext_resource type="PackedScene" uid="uid://deb6ahist7ktm" path="res://ui/slider/slider.tscn" id="3_h61ec"]
+[ext_resource type="PackedScene" uid="uid://sddk5xqkdc4t" path="res://ui/boton.tscn" id="4_v8juk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_il5fp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2n5ss"]
+bg_color = Color(0.105882, 0.262745, 0.196078, 1)
+shadow_color = Color(0, 0, 0, 0.0980392)
+shadow_size = 10
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5lilx"]
+bg_color = Color(0.176471, 0.415686, 0.309804, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_w7wnn"]
+base_font = ExtResource("2_gn6kl")
+variation_opentype = {
+2003265652: 600
+}
+
+[node name="Panel" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_il5fp")
+script = ExtResource("1_gn6kl")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -193.0
+offset_right = 225.0
+offset_bottom = 257.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2n5ss")
+
+[node name="Panel2" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -175.0
+offset_top = -40.0
+offset_right = 175.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5lilx")
+
+[node name="TituloConfiguracion" parent="Panel/Panel2" instance=ExtResource("1_m7156")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_right = 0.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "CONFIGURACION"
+
+[node name="ContenedorBotones" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -144.0
+offset_right = 150.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 90
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ContenedorBotones"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="VolumenMusica" type="VBoxContainer" parent="Panel/ContenedorBotones/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="Panel/ContenedorBotones/VBoxContainer/VolumenMusica"]
+texture_filter = 2
+layout_mode = 2
+theme_override_colors/font_color = Color(0.847059, 0.952941, 0.862745, 1)
+theme_override_fonts/font = SubResource("FontVariation_w7wnn")
+theme_override_font_sizes/font_size = 26
+text = "VOLUMEN MUSICA"
+
+[node name="SliderMusica" parent="Panel/ContenedorBotones/VBoxContainer/VolumenMusica" instance=ExtResource("3_h61ec")]
+layout_mode = 2
+nombre_bus = "musica"
+
+[node name="VolumenSFX" type="VBoxContainer" parent="Panel/ContenedorBotones/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="Panel/ContenedorBotones/VBoxContainer/VolumenSFX"]
+texture_filter = 2
+layout_mode = 2
+theme_override_colors/font_color = Color(0.847059, 0.952941, 0.862745, 1)
+theme_override_fonts/font = SubResource("FontVariation_w7wnn")
+theme_override_font_sizes/font_size = 26
+text = "VOLUMEN SFX"
+
+[node name="SliderSFX" parent="Panel/ContenedorBotones/VBoxContainer/VolumenSFX" instance=ExtResource("3_h61ec")]
+layout_mode = 2
+nombre_bus = "sfx"
+
+[node name="VolverBoton" parent="Panel/ContenedorBotones" instance=ExtResource("4_v8juk")]
+layout_mode = 2
+text = "VOLVER"
+
+[connection signal="pressed" from="Panel/ContenedorBotones/VolverBoton" to="." method="_on_volver_boton_pressed"]
