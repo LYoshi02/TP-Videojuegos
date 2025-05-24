@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	if Input.is_action_just_pressed("salto") and is_on_floor():
-		ReproductorMusica.reproducir_efecto_de_sonido(GLOBAL.EFECTOS_SONIDO["SALTO"], 20)
+		ReproductorMusica.reproducir_efecto_de_sonido(GLOBAL.EFECTOS_SONIDO["SALTO"])
 		velocity.y = VELOCIDAD_SALTO
 
 	# Get the input direction and handle the movement/deceleration.

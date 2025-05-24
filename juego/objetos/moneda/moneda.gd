@@ -5,5 +5,5 @@ extends Area2D
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == GLOBAL.PERSONAJE["NOMBRE_ELEMENTO"]:
 		game_manager.recolectar_moneda()
-		ReproductorMusica.reproducir_efecto_de_sonido(GLOBAL.EFECTOS_SONIDO["MONEDA"], 20)
+		ReproductorMusica.reproducir_efecto_de_sonido(GLOBAL.EFECTOS_SONIDO["MONEDA"])
 		queue_free()
