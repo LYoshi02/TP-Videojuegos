@@ -54,7 +54,9 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	var direccion := Input.get_axis("izquierda", "derecha")
-	if direccion:
+	if atacando and is_on_floor():
+		velocity.x = 0
+	elif direccion:
 		velocity.x = direccion * VELOCIDAD_MOVIMIENTO
 	else:
 		velocity.x = move_toward(velocity.x, 0, 30)
