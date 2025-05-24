@@ -12,6 +12,10 @@ const PERSONAJE = {
 	"NOMBRE_ELEMENTO": "Personaje"
 }
 
+const GRUPOS = {
+	"ROMPIBLE": "rompible"
+}
+
 # Lógica de Guardado
 var SaveManager = preload("res://scripts/save_manager.gd").new()
 

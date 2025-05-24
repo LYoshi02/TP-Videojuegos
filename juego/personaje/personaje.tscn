@@ -1,7 +1,23 @@
-[gd_scene load_steps=20 format=3 uid="uid://du875us3dm6vj"]
+[gd_scene load_steps=25 format=3 uid="uid://du875us3dm6vj"]
 
 [ext_resource type="Script" uid="uid://bhvkywb3327pg" path="res://juego/personaje/personaje.gd" id="1_whg8i"]
 [ext_resource type="Texture2D" uid="uid://cneavkcsje0aj" path="res://assets/sprites/personaje/personaje_principal_v2.png" id="2_whg8i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whg8i"]
+atlas = ExtResource("2_whg8i")
+region = Rect2(350, 185, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfsjq"]
+atlas = ExtResource("2_whg8i")
+region = Rect2(100, 222, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0p2h5"]
+atlas = ExtResource("2_whg8i")
+region = Rect2(150, 222, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qa8ym"]
+atlas = ExtResource("2_whg8i")
+region = Rect2(200, 222, 50, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ikvdb"]
 atlas = ExtResource("2_whg8i")
@@ -65,6 +81,23 @@ region = Rect2(50, 74, 50, 37)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s5i2y"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whg8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfsjq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0p2h5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qa8ym")
+}],
+"loop": false,
+"name": &"atacar",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ikvdb")
@@ -134,17 +167,26 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nmoq4"]
 radius = 8.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whg8i"]
+size = Vector2(16, 25)
+
 [node name="Personaje" type="CharacterBody2D"]
 script = ExtResource("1_whg8i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_s5i2y")
-animation = &"caer"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.797597
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_nmoq4")
 
-[node name="TimerSalto" type="Timer" parent="."]
+[node name="AreaAtaque" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaAtaque"]
+position = Vector2(14, 3.5)
+shape = SubResource("RectangleShape2D_whg8i")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
