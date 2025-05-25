@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://csd5xp48x83s2"]
+[gd_scene load_steps=15 format=3 uid="uid://csd5xp48x83s2"]
 
 [ext_resource type="Script" uid="uid://cyvahdqdbxwti" path="res://ui/hud/hud.gd" id="1_imuuq"]
 [ext_resource type="Texture2D" uid="uid://dttx8sc650qf4" path="res://assets/imagenes/moneda.png" id="2_imuuq"]
 [ext_resource type="FontFile" uid="uid://br0ox30rd3ddl" path="res://assets/fuentes/merriweather_sans/MerriweatherSans-VariableFont_wght.ttf" id="3_gfles"]
+[ext_resource type="PackedScene" uid="uid://sddk5xqkdc4t" path="res://ui/boton.tscn" id="3_imuuq"]
 [ext_resource type="Texture2D" uid="uid://batb4gmhxhy0c" path="res://assets/imagenes/heart.png" id="3_o2lis"]
 [ext_resource type="PackedScene" uid="uid://8y047fvxb73e" path="res://pantallas/pausa/pausa.tscn" id="5_kwc50"]
 [ext_resource type="Texture2D" uid="uid://clf73hllkd8vu" path="res://assets/imagenes/arrow.png" id="7_o2lis"]
@@ -47,10 +48,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -62.0
-offset_top = -23.5
-offset_right = 62.0
-offset_bottom = 23.5
+offset_left = -127.0
+offset_top = -21.5
+offset_right = -3.0
+offset_bottom = 25.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
@@ -70,6 +71,17 @@ theme_override_font_sizes/font_size = 32
 text = "00"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BotonPausa" parent="." instance=ExtResource("3_imuuq")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -82.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = 82.0
+grow_horizontal = 0
+text = "II"
 
 [node name="VidasPanel" type="Panel" parent="."]
 offset_left = 41.0
@@ -167,3 +179,5 @@ texture_normal = ExtResource("7_o2lis")
 shape = SubResource("RectangleShape2D_gfles")
 action = "salto"
 visibility_mode = 1
+
+[connection signal="pressed" from="BotonPausa" to="." method="_on_boton_pausa_pressed"]

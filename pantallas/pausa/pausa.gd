@@ -10,8 +10,7 @@ func _process(_delta):
 			hide()
 			panel_configuracion.hide()
 		else:
-			get_tree().paused = true;
-			show()
+			pausar_juego()
 
 func _on_continuar_boton_pressed() -> void:
 	get_tree().paused = false;
@@ -27,3 +26,7 @@ func _on_configuracion_boton_pressed() -> void:
 func _on_salir_boton_pressed() -> void:
 	get_tree().paused = false;
 	get_tree().change_scene_to_file(GLOBAL.PANTALLAS["MENU_PRINCIPAL"])
+
+func pausar_juego() -> void:
+	get_tree().paused = true;
+	show()
