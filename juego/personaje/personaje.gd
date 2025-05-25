@@ -43,6 +43,10 @@ func actualizar_posicion_area_ataque():
 		"izquierda":
 			area_ataque.position = Vector2(-15, 0)
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ataque"):
+		atacar()
+
 func _physics_process(delta: float) -> void:
 	# Animations
 	if is_on_floor():
@@ -80,8 +84,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	actualizar_posicion_area_ataque()
 
-	if Input.is_action_just_pressed("ataque"):
-		atacar()
 	if Input.is_action_pressed('izquierda'):
 		sprite_2d.flip_h = true
 		direccion_movimiento = "izquierda"
