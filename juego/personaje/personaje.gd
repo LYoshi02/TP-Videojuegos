@@ -14,6 +14,7 @@ const VELOCIDAD_SALTO = -600.0
 var atacando = false
 var saltando = false
 var es_inmune: bool = false
+var direccion_movimiento: String = "derecha"
 
 func saltar():
 	velocity.y = VELOCIDAD_SALTO
@@ -34,6 +35,13 @@ func atacar():
 		var objeto_padre = objeto.get_parent()
 		if objeto_padre.is_in_group(GLOBAL.GRUPOS["ROMPIBLE"]):
 			objeto_padre.romper()
+
+func actualizar_posicion_area_ataque():
+	match direccion_movimiento:
+		"derecha":
+			area_ataque.position = Vector2(15, 0)
+		"izquierda":
+			area_ataque.position = Vector2(-15, 0)
 
 func _physics_process(delta: float) -> void:
 	# Animations
@@ -70,13 +78,16 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, 30)
 
 	move_and_slide()
+	actualizar_posicion_area_ataque()
 
 	if Input.is_action_just_pressed("ataque"):
 		atacar()
-	if Input.is_action_just_pressed('izquierda'):
+	if Input.is_action_pressed('izquierda'):
 		sprite_2d.flip_h = true
-	if Input.is_action_just_pressed('derecha'):
+		direccion_movimiento = "izquierda"
+	if Input.is_action_pressed('derecha'):
 		sprite_2d.flip_h = false
+		direccion_movimiento = "derecha"
 
 func daniar_con_impulso(posicion_impacto: Vector2):
 	var x_delta = position.x - posicion_impacto.x
