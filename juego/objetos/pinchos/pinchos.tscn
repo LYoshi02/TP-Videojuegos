@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bht0yiyvbfqc8"]
+[gd_scene load_steps=5 format=3 uid="uid://bht0yiyvbfqc8"]
 
 [ext_resource type="Script" uid="uid://bgip6k1tacumk" path="res://juego/objetos/pinchos/pinchos.gd" id="1_5o6mr"]
 [ext_resource type="Texture2D" uid="uid://dqfe5f75lkof2" path="res://assets/sprites/objetos/wood_stakes.png" id="2_whnrl"]
@@ -7,13 +7,7 @@
 size = Vector2(30, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5o6mr"]
-size = Vector2(26, 4)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_whnrl"]
-size = Vector2(3, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7rvbx"]
-size = Vector2(3, 20)
+size = Vector2(32, 20)
 
 [node name="Pinchos" type="StaticBody2D"]
 script = ExtResource("1_5o6mr")
@@ -29,21 +23,6 @@ shape = SubResource("RectangleShape2D_dcfil")
 [node name="AreaSuperior" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaSuperior"]
-position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_5o6mr")
 
-[node name="AreaLateralIzquierda" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaLateralIzquierda"]
-position = Vector2(-14.5, 0)
-shape = SubResource("RectangleShape2D_whnrl")
-
-[node name="AreaLateralDerecha" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaLateralDerecha"]
-position = Vector2(14.5, 0)
-shape = SubResource("RectangleShape2D_7rvbx")
-
 [connection signal="body_entered" from="AreaSuperior" to="." method="_on_area_superior_body_entered"]
-[connection signal="body_entered" from="AreaLateralIzquierda" to="." method="_on_area_lateral_izquierda_body_entered"]
-[connection signal="body_entered" from="AreaLateralDerecha" to="." method="_on_area_lateral_derecha_body_entered"]

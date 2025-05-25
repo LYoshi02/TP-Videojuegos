@@ -9,9 +9,9 @@ extends Node2D
 @export var demora_antes_de_atacar = 1.0
 @export var tiempo_espera_post_regreso = 0.5
 
-@onready var game_manager: Node = %GameManager
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var jugador: CharacterBody2D = %Personaje
+
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var posicion_origen
 var posicion_transicion: Vector2
@@ -102,13 +102,4 @@ func mover_hacia(objetivo: Vector2, delta, velocidad):
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == GLOBAL.PERSONAJE["NOMBRE_ELEMENTO"]:
-		var y_delta = position.y - body.position.y
-		if y_delta <= 30:
-			var x_delta = body.position.x - position.x
-			if not game_manager.es_ultima_vida():
-				if x_delta > 0:
-					body.saltar_al_costado(500)
-				else:
-					body.saltar_al_costado(-500)
-			print("Decrease health")		
-			game_manager.reducir_vida()
+		body.daniar_con_impulso(Vector2(position.x, position.y))

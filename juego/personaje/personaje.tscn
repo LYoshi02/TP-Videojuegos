@@ -189,4 +189,13 @@ monitorable = false
 position = Vector2(14, 3.5)
 shape = SubResource("RectangleShape2D_whg8i")
 
+[node name="TimerInmunidad" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="TimerParpadeo" type="Timer" parent="."]
+wait_time = 0.05
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="TimerInmunidad" to="." method="_on_timer_inmunidad_timeout"]
+[connection signal="timeout" from="TimerParpadeo" to="." method="_on_timer_parpadeo_timeout"]
