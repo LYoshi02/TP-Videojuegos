@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 
-const VELOCIDAD_MOVIMIENTO = 400.0
-const VELOCIDAD_SALTO = -600.0
+const VELOCIDAD_MOVIMIENTO = 225.0
+const VELOCIDAD_SALTO = -425.0
 
 @onready var game_manager: Node = %GameManager
 
@@ -126,6 +126,12 @@ func daniar_personaje():
 		timer_parpadeo.start()
 		print("Decrease health")
 		game_manager.reducir_vida()
+
+func reaparecer():
+	var es_ultima_vida = game_manager.es_ultima_vida()
+	daniar_personaje()
+	if not es_ultima_vida:
+		game_manager.reaparecer_jugador(self)
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if sprite_2d.animation == "atacar":
