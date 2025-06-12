@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://yook7105bj3k"]
+[gd_scene load_steps=17 format=4 uid="uid://yook7105bj3k"]
 
 [ext_resource type="PackedScene" uid="uid://csd5xp48x83s2" path="res://ui/hud/hud.tscn" id="1_73ecu"]
 [ext_resource type="Script" uid="uid://cgi4n8uj2g5cd" path="res://scripts/game_manager.gd" id="1_jucfr"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bqbhdgf7qlc7a" path="res://juego/fondos/selva/selva.tscn" id="9_ni65d"]
 [ext_resource type="PackedScene" uid="uid://bht0yiyvbfqc8" path="res://juego/objetos/pinchos/pinchos.tscn" id="9_vgmtr"]
 [ext_resource type="PackedScene" uid="uid://285hmeu6l5pc" path="res://pantallas/fin_nivel/fin_nivel.tscn" id="10_py22g"]
+[ext_resource type="PackedScene" uid="uid://yphhubcosysa" path="res://juego/gameplay/death_zone/death_zone.tscn" id="12_e7dvy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lyfj1"]
 texture = ExtResource("5_ycegj")
@@ -163,8 +164,11 @@ scale = Vector2(1.47513, 1.47513)
 position = Vector2(817, 365)
 scale = Vector2(1.47513, 1.47513)
 
+[node name="DeathZone" parent="NodosEscena" instance=ExtResource("12_e7dvy")]
+position = Vector2(-10, 509)
+
 [node name="Finish" parent="NodosEscena" instance=ExtResource("8_lyfj1")]
-position = Vector2(1124, 351)
+position = Vector2(88.0002, 204)
 scale = Vector2(3.248, 3.248)
 
 [node name="HUD" parent="." instance=ExtResource("1_73ecu")]

@@ -10,6 +10,9 @@ func reproducir_musica(musica: AudioStream, volumen = 0.0):
 	bus = "musica"
 	play()
 
+func pausar_musica():
+	stop()
+
 func reproducir_efecto_de_sonido(efecto: AudioStream, volumen = 15):
 	var reproductor = AudioStreamPlayer2D.new()
 	reproductor.stream = efecto
