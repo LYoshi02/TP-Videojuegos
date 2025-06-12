@@ -12707,7 +12707,7 @@ id_progreso = 3
 
 [node name="Personaje" parent="NodosEscena" instance=ExtResource("3_rmmsv")]
 unique_name_in_owner = true
-position = Vector2(7088, 389)
+position = Vector2(25, 380)
 scale = Vector2(1.75, 1.75)
 
 [node name="Camera2D" type="Camera2D" parent="NodosEscena/Personaje"]
