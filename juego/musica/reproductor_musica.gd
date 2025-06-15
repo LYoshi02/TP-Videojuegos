@@ -1,4 +1,4 @@
-extends AudioStreamPlayer2D
+extends AudioStreamPlayer
 
 func reproducir_musica(musica: AudioStream, volumen = 0.0):
 	if stream == musica:
@@ -14,7 +14,7 @@ func pausar_musica():
 	stop()
 
 func reproducir_efecto_de_sonido(efecto: AudioStream, volumen = 15):
-	var reproductor = AudioStreamPlayer2D.new()
+	var reproductor = AudioStreamPlayer.new()
 	reproductor.stream = efecto
 	reproductor.name = "REPRODUCTOR_SFX"
 	reproductor.volume_db = volumen
