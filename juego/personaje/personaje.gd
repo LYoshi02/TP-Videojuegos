@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 const VELOCIDAD_MOVIMIENTO = 225.0
 const VELOCIDAD_SALTO = -425.0
+const DURACION_BUFFER_SALTO = 0.15
+const DURACION_COYOTE = 0.15
 
 @onready var game_manager: Node = %GameManager
 
@@ -11,12 +13,15 @@ const VELOCIDAD_SALTO = -425.0
 @onready var timer_inmunidad: Timer = $TimerInmunidad
 @onready var timer_parpadeo: Timer = $TimerParpadeo
 
-var atacando = false
-var saltando = false
+var atacando: bool = false
+var saltando: bool = false
 var es_inmune: bool = false
 var direccion_movimiento: String = "derecha"
+var timer_buffer_salto: float = 0
+var timer_coyote: float = 0
 
 func saltar():
+	ReproductorMusica.reproducir_efecto_de_sonido(GLOBAL.EFECTOS_SONIDO["SALTO"])
 	velocity.y = VELOCIDAD_SALTO
 
 func saltar_al_costado(x):
@@ -26,7 +31,7 @@ func saltar_al_costado(x):
 func saltar_verticalmente(y):
 	velocity.y = y
 
-func atacar():	
+func atacar():
 	if not atacando:
 		atacando = true
 	
@@ -68,10 +73,22 @@ func _physics_process(delta: float) -> void:
 			sprite_2d.play("caer")
 
 	# Handle jump.
-	if Input.is_action_just_pressed("salto") and is_on_floor():
-		ReproductorMusica.reproducir_efecto_de_sonido(GLOBAL.EFECTOS_SONIDO["SALTO"])
-		velocity.y = VELOCIDAD_SALTO
+	if Input.is_action_just_pressed("salto"):
+		timer_buffer_salto = DURACION_BUFFER_SALTO
 
+	if timer_buffer_salto > 0.0:
+		timer_buffer_salto -= delta
+	
+	if is_on_floor():
+		timer_coyote = DURACION_COYOTE
+	else:
+		timer_coyote -= delta
+	
+	if timer_coyote > 0 and timer_buffer_salto > 0:
+		saltar()
+		timer_buffer_salto = 0
+		timer_coyote = 0
+	
 	# Get the input direction and handle the movement/deceleration.
 	var direccion := Input.get_axis("izquierda", "derecha")
 	if atacando and is_on_floor():
