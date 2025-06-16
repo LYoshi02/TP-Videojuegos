@@ -165,6 +165,7 @@ position = Vector2(808, 8)
 texture_normal = ExtResource("10_cxhb7")
 shape = SubResource("RectangleShape2D_p3vm3")
 action = "ataque"
+visibility_mode = 1
 
 [node name="PausaPanel" parent="." instance=ExtResource("5_kwc50")]
 visible = false
