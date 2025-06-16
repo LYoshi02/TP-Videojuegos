@@ -24,6 +24,7 @@ variation_opentype = {
 }
 
 [node name="Panel" type="Panel"]
+z_index = 10
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -33,6 +34,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_il5fp")
 script = ExtResource("1_gn6kl")
 
 [node name="Panel" type="Panel" parent="."]
+z_index = 10
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -48,6 +50,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2n5ss")
 
 [node name="Panel2" type="Panel" parent="Panel"]
+z_index = 10
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -60,6 +63,7 @@ grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5lilx")
 
 [node name="TituloConfiguracion" parent="Panel/Panel2" instance=ExtResource("1_m7156")]
+z_index = 10
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -73,6 +77,7 @@ theme_override_font_sizes/font_size = 40
 text = "CONFIGURACION"
 
 [node name="ContenedorBotones" type="VBoxContainer" parent="Panel"]
+z_index = 10
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -80,23 +85,26 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -150.0
-offset_top = -154.0
+offset_top = -144.0
 offset_right = 150.0
-offset_bottom = 190.0
+offset_bottom = 176.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 42
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ContenedorBotones"]
+z_index = 10
 layout_mode = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 30
 
 [node name="VolumenMusica" type="VBoxContainer" parent="Panel/ContenedorBotones/VBoxContainer"]
+z_index = 10
 layout_mode = 2
 theme_override_constants/separation = 5
 
 [node name="Label" type="Label" parent="Panel/ContenedorBotones/VBoxContainer/VolumenMusica"]
+z_index = 10
 texture_filter = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0.847059, 0.952941, 0.862745, 1)
@@ -105,10 +113,12 @@ theme_override_font_sizes/font_size = 26
 text = "VOLUMEN MUSICA"
 
 [node name="SliderMusica" parent="Panel/ContenedorBotones/VBoxContainer/VolumenMusica" instance=ExtResource("3_h61ec")]
+z_index = 10
 layout_mode = 2
 nombre_bus = "musica"
 
 [node name="VolumenSFX" type="VBoxContainer" parent="Panel/ContenedorBotones/VBoxContainer"]
+z_index = 10
 layout_mode = 2
 theme_override_constants/separation = 5
 
@@ -125,12 +135,16 @@ layout_mode = 2
 nombre_bus = "sfx"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/ContenedorBotones/VBoxContainer"]
+z_index = 10
 layout_mode = 2
 
 [node name="CheckBoxFullScreen" type="CheckBox" parent="Panel/ContenedorBotones/VBoxContainer/HBoxContainer"]
+z_index = 10
+texture_filter = 2
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="Panel/ContenedorBotones/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Panel/ContenedorBotones/VBoxContainer/HBoxContainer"]
+z_index = 10
 texture_filter = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0.847059, 0.952941, 0.862745, 1)
@@ -139,6 +153,7 @@ theme_override_font_sizes/font_size = 24
 text = "PANTALLA COMPLETA"
 
 [node name="VolverBoton" parent="Panel/ContenedorBotones" instance=ExtResource("4_v8juk")]
+z_index = 10
 layout_mode = 2
 text = "VOLVER"
 

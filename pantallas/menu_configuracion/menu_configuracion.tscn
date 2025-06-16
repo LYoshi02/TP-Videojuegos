@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c7ilqfxxyck6l"]
+[gd_scene load_steps=11 format=3 uid="uid://c7ilqfxxyck6l"]
 
 [ext_resource type="Script" uid="uid://b30cnjjme0emd" path="res://pantallas/menu_configuracion/menu_configuracion.gd" id="1_pcvoh"]
 [ext_resource type="PackedScene" uid="uid://b4ctirjw1xq53" path="res://ui/titulo.tscn" id="1_tanxu"]
@@ -19,6 +19,12 @@ shadow_offset = Vector2(0, 2)
 bg_color = Color(0.176471, 0.415686, 0.309804, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_mvscm"]
+base_font = ExtResource("3_ltsyv")
+variation_opentype = {
+2003265652: 600
+}
+
+[sub_resource type="FontVariation" id="FontVariation_ltsyv"]
 base_font = ExtResource("3_ltsyv")
 variation_opentype = {
 2003265652: 600
@@ -90,9 +96,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -150.0
-offset_top = -144.0
+offset_top = -148.0
 offset_right = 150.0
-offset_bottom = 176.0
+offset_bottom = 188.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
@@ -106,7 +112,7 @@ texture_filter = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0.847059, 0.952941, 0.862745, 1)
 theme_override_fonts/font = SubResource("FontVariation_mvscm")
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 22
 text = "VOLUMEN MUSICA"
 
 [node name="SliderMusica" parent="Panel/Panel/ContenedorBotones/VolumenMusica" instance=ExtResource("4_yx0ux")]
@@ -122,12 +128,30 @@ texture_filter = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0.847059, 0.952941, 0.862745, 1)
 theme_override_fonts/font = SubResource("FontVariation_mvscm")
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 22
 text = "VOLUMEN SFX"
 
 [node name="SliderSFX" parent="Panel/Panel/ContenedorBotones/VolumenSFX" instance=ExtResource("4_yx0ux")]
 layout_mode = 2
 nombre_bus = "sfx"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel/ContenedorBotones"]
+z_index = 10
+layout_mode = 2
+
+[node name="CheckBoxFullScreen" type="CheckBox" parent="Panel/Panel/ContenedorBotones/HBoxContainer"]
+z_index = 10
+texture_filter = 2
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/Panel/ContenedorBotones/HBoxContainer"]
+z_index = 10
+texture_filter = 2
+layout_mode = 2
+theme_override_colors/font_color = Color(0.847059, 0.952941, 0.862745, 1)
+theme_override_fonts/font = SubResource("FontVariation_ltsyv")
+theme_override_font_sizes/font_size = 22
+text = "PANTALLA COMPLETA"
 
 [node name="BorrarDatosBoton" parent="Panel/Panel/ContenedorBotones" instance=ExtResource("3_tbv8m")]
 layout_mode = 2
@@ -182,6 +206,7 @@ text = "Borrar Datos"
 layout_mode = 2
 text = "Volver"
 
+[connection signal="toggled" from="Panel/Panel/ContenedorBotones/HBoxContainer/CheckBoxFullScreen" to="." method="_on_check_box_full_screen_toggled"]
 [connection signal="pressed" from="Panel/Panel/ContenedorBotones/BorrarDatosBoton" to="." method="_on_borrar_datos_boton_pressed"]
 [connection signal="pressed" from="Panel/Panel/ContenedorBotones/VolverBoton" to="." method="_on_volver_boton_pressed"]
 [connection signal="pressed" from="ContenedorBotones/BorrarDatosBoton" to="." method="_on_borrar_datos_boton_pressed"]
