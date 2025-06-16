@@ -17,12 +17,17 @@ var posicion_inicial: Vector2
 var ultimo_checkpoint: Node = null
 var ultimo_id_progreso_checkpoint: int
 
+# Tiempo de inicio del nivel en segundos
+var tiempo_inicio: float
+
 func _ready() -> void:
 	monedas_recolectadas = 0
 	if monedas != null:
 		monedas_totales = monedas.get_child_count()
 	if personaje != null:
 		posicion_inicial = personaje.position
+		
+	tiempo_inicio = Time.get_ticks_msec() / 1000.0
 
 func _on_hud_ready() -> void:
 	hud.actualizar_label_monedas(monedas_recolectadas, monedas_totales)
@@ -69,5 +74,9 @@ func calcular_estrellas_conseguidas():
 
 func finalizar_nivel():
 	var estrellas_conseguidas = calcular_estrellas_conseguidas()
-	GLOBAL.actualizar_nivel(id_nivel, monedas_recolectadas, estrellas_conseguidas)
-	fin_nivel.mostrar_pantalla_fin_nivel(monedas_recolectadas, monedas_totales, muertes, estrellas_conseguidas)
+	var tiempo_fin = Time.get_ticks_msec() / 1000.0
+	var tiempo_total = tiempo_fin - tiempo_inicio
+	print("Tiempo total:", tiempo_total, "segundos")
+
+	GLOBAL.actualizar_nivel(id_nivel, monedas_recolectadas, estrellas_conseguidas, tiempo_total)
+	fin_nivel.mostrar_pantalla_fin_nivel(monedas_recolectadas, monedas_totales, muertes, estrellas_conseguidas, tiempo_total)

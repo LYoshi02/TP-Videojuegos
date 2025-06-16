@@ -89,7 +89,7 @@ theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="FinNivelPanel/Panel/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 60
+theme_override_constants/separation = 35
 alignment = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="FinNivelPanel/Panel/MarginContainer/VBoxContainer"]
@@ -111,6 +111,13 @@ alignment = 1
 texture_filter = 2
 layout_mode = 2
 theme_override_constants/separation = 10
+
+[node name="TiempoLabel" type="Label" parent="FinNivelPanel/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+texture_filter = 2
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_qkbud")
+theme_override_font_sizes/font_size = 24
+text = "TIEMPO: 00:00:00"
 
 [node name="MonedasLabel" type="Label" parent="FinNivelPanel/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
 texture_filter = 2
