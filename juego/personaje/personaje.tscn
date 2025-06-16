@@ -164,8 +164,8 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nmoq4"]
-radius = 8.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikvdb"]
+size = Vector2(15, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whg8i"]
 size = Vector2(16, 25)
@@ -179,8 +179,8 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
-shape = SubResource("CapsuleShape2D_nmoq4")
+position = Vector2(-0.5, 3.5)
+shape = SubResource("RectangleShape2D_ikvdb")
 
 [node name="AreaAtaque" type="Area2D" parent="."]
 monitorable = false
