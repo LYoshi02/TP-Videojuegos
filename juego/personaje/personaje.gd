@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 
 const VELOCIDAD_MOVIMIENTO = 225.0
-const VELOCIDAD_SALTO = -425.0
+const VELOCIDAD_SALTO = -450.0
+const VELOCIDAD_SALTO_CORTO = -250
 const DURACION_BUFFER_SALTO = 0.15
 const DURACION_COYOTE = 0.15
 
@@ -15,6 +16,7 @@ const DURACION_COYOTE = 0.15
 
 var atacando: bool = false
 var saltando: bool = false
+var salto_corto_activo: bool = false
 var es_inmune: bool = false
 var direccion_movimiento: String = "derecha"
 var timer_buffer_salto: float = 0
@@ -81,6 +83,7 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_floor():
 		timer_coyote = DURACION_COYOTE
+		salto_corto_activo = false
 	else:
 		timer_coyote -= delta
 	
@@ -88,6 +91,10 @@ func _physics_process(delta: float) -> void:
 		saltar()
 		timer_buffer_salto = 0
 		timer_coyote = 0
+	
+	if Input.is_action_just_released("salto") and velocity.y < VELOCIDAD_SALTO_CORTO and not salto_corto_activo:
+		salto_corto_activo = true
+		velocity.y = VELOCIDAD_SALTO_CORTO
 	
 	# Get the input direction and handle the movement/deceleration.
 	var direccion := Input.get_axis("izquierda", "derecha")
