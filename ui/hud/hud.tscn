@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://csd5xp48x83s2"]
+[gd_scene load_steps=18 format=3 uid="uid://csd5xp48x83s2"]
 
 [ext_resource type="Script" uid="uid://cyvahdqdbxwti" path="res://ui/hud/hud.gd" id="1_imuuq"]
 [ext_resource type="Texture2D" uid="uid://dttx8sc650qf4" path="res://assets/imagenes/moneda.png" id="2_imuuq"]
@@ -6,7 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://sddk5xqkdc4t" path="res://ui/boton.tscn" id="3_imuuq"]
 [ext_resource type="Texture2D" uid="uid://batb4gmhxhy0c" path="res://assets/imagenes/heart.png" id="3_o2lis"]
 [ext_resource type="PackedScene" uid="uid://8y047fvxb73e" path="res://pantallas/pausa/pausa.tscn" id="5_kwc50"]
-[ext_resource type="Texture2D" uid="uid://clf73hllkd8vu" path="res://assets/imagenes/arrow.png" id="7_o2lis"]
+[ext_resource type="Texture2D" uid="uid://cndlduy04udlm" path="res://assets/imagenes/botones/boton_flecha_izquierda.png" id="7_gfles"]
+[ext_resource type="Texture2D" uid="uid://dhc223m42qrw0" path="res://assets/imagenes/botones/boton_flecha_derecha.png" id="8_aixkq"]
+[ext_resource type="Texture2D" uid="uid://bp1yxrr28wkxf" path="res://assets/imagenes/botones/boton_flecha_arriba.png" id="9_cxhb7"]
+[ext_resource type="Texture2D" uid="uid://csmlbdfim1kbq" path="res://assets/imagenes/botones/boton_ataque.png" id="10_cxhb7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_imuuq"]
 
@@ -18,17 +21,22 @@ variation_opentype = {
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kwc50"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o2lis"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cxhb7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfles"]
+size = Vector2(130, 130)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o2lis"]
+size = Vector2(130, 130)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gfles"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3vm3"]
+size = Vector2(130, 130)
 
 [node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("corazones")]
 script = ExtResource("1_imuuq")
 corazones = [NodePath("VidasPanel/HBoxContainer/Vida1"), NodePath("VidasPanel/HBoxContainer/Vida2"), NodePath("VidasPanel/HBoxContainer/Vida3")]
+metadata/_edit_horizontal_guides_ = [600.0]
+metadata/_edit_vertical_guides_ = [32.0, 1120.0]
 
 [node name="MonedasPanel" type="Panel" parent="."]
 anchors_preset = 1
@@ -97,6 +105,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -11.5
+offset_right = 43.5
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -116,68 +126,47 @@ layout_mode = 2
 texture = ExtResource("3_o2lis")
 expand_mode = 2
 
-[node name="PausaPanel" parent="." instance=ExtResource("5_kwc50")]
-visible = false
-
 [node name="ControlesMobile" type="Panel" parent="."]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -176.0
+offset_right = -32.0
+offset_bottom = -48.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_cxhb7")
 
-[node name="Panel" type="Panel" parent="ControlesMobile"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 30.0
-offset_top = -223.0
-offset_right = 459.0
-offset_bottom = -21.0
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_o2lis")
-
-[node name="LeftArrow" type="TouchScreenButton" parent="ControlesMobile/Panel"]
-position = Vector2(33, 31)
-scale = Vector2(9.85851, 9.93614)
-texture_normal = ExtResource("7_o2lis")
+[node name="FlechaIzquierda" type="TouchScreenButton" parent="ControlesMobile"]
+position = Vector2(16, 9)
+texture_normal = ExtResource("7_gfles")
 shape = SubResource("RectangleShape2D_gfles")
 action = "izquierda"
 visibility_mode = 1
 
-[node name="RightArrow" type="TouchScreenButton" parent="ControlesMobile/Panel"]
-position = Vector2(392, 169)
-rotation = -3.14159
-scale = Vector2(9.85851, 9.93614)
-texture_normal = ExtResource("7_o2lis")
+[node name="FlechaDerecha" type="TouchScreenButton" parent="ControlesMobile"]
+position = Vector2(192, 8)
+texture_normal = ExtResource("8_aixkq")
 shape = SubResource("RectangleShape2D_o2lis")
 action = "derecha"
 visibility_mode = 1
 
-[node name="Panel2" type="Panel" parent="ControlesMobile"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -237.0
-offset_top = -223.0
-offset_right = -29.0
-offset_bottom = -15.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_gfles")
-
-[node name="UpArrow" type="TouchScreenButton" parent="ControlesMobile/Panel2"]
-position = Vector2(173, 34)
-rotation = 1.5708
-scale = Vector2(9.85851, 9.93614)
-texture_normal = ExtResource("7_o2lis")
+[node name="Salto" type="TouchScreenButton" parent="ControlesMobile"]
+position = Vector2(984, 8)
+texture_normal = ExtResource("9_cxhb7")
 shape = SubResource("RectangleShape2D_gfles")
 action = "salto"
 visibility_mode = 1
+
+[node name="Ataque" type="TouchScreenButton" parent="ControlesMobile"]
+position = Vector2(808, 8)
+texture_normal = ExtResource("10_cxhb7")
+shape = SubResource("RectangleShape2D_p3vm3")
+action = "ataque"
+
+[node name="PausaPanel" parent="." instance=ExtResource("5_kwc50")]
+visible = false
 
 [connection signal="pressed" from="BotonPausa" to="." method="_on_boton_pausa_pressed"]
