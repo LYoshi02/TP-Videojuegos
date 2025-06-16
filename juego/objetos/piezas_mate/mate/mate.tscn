@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cmkyl52ssxecm"]
 
 [ext_resource type="Texture2D" uid="uid://degao6n78xmst" path="res://assets/imagenes/mate.png" id="1_1naqg"]
-[ext_resource type="Script" uid="uid://bcxlp7smfucjq" path="res://juego/objetos/mate/mate.gd" id="1_y3amw"]
+[ext_resource type="Script" uid="uid://bcxlp7smfucjq" path="res://juego/objetos/piezas_mate/mate/mate.gd" id="1_y3amw"]
 [ext_resource type="Texture2D" uid="uid://cs201lvaj05ij" path="res://assets/efectos/rayos_luz.png" id="2_y1ypr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f20d8"]

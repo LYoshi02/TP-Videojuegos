@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://qhgyl5ye1fff"]
+
+[ext_resource type="Script" uid="uid://cemxinduvllvw" path="res://juego/objetos/piezas_mate/yerba/yerba.gd" id="1_7pnx1"]
+[ext_resource type="Texture2D" uid="uid://cs201lvaj05ij" path="res://assets/efectos/rayos_luz.png" id="2_vw130"]
+[ext_resource type="Texture2D" uid="uid://6xpfbyjf2e06" path="res://assets/imagenes/yerba_sagrada.png" id="3_7pnx1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f20d8"]
+size = Vector2(14.5, 14.5)
+
+[node name="Finish" type="Area2D"]
+script = ExtResource("1_7pnx1")
+
+[node name="SpriteRayosLuz" type="Sprite2D" parent="."]
+modulate = Color(0.894118, 0.713726, 0.101961, 0.588235)
+position = Vector2(1.19209e-07, 1.19209e-07)
+scale = Vector2(0.0109124, 0.0109124)
+texture = ExtResource("2_vw130")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_7pnx1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_f20d8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
