@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cse0m25gr0cyf"]
+
+[ext_resource type="Texture2D" uid="uid://bdinbo22hg14" path="res://ui/checkbox/icon_checked.png" id="1_pw0sj"]
+[ext_resource type="Texture2D" uid="uid://b24wjg4vxifvy" path="res://ui/checkbox/icon_unchecked.png" id="2_h37be"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jd83v"]
+
+[node name="CheckBox" type="CheckBox"]
+z_index = 10
+texture_filter = 2
+theme_override_constants/icon_max_width = 22
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jd83v")
+theme_override_icons/checked = ExtResource("1_pw0sj")
+theme_override_icons/unchecked = ExtResource("2_h37be")

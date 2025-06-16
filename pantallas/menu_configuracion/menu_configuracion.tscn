@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://c7ilqfxxyck6l"]
+[gd_scene load_steps=12 format=3 uid="uid://c7ilqfxxyck6l"]
 
 [ext_resource type="Script" uid="uid://b30cnjjme0emd" path="res://pantallas/menu_configuracion/menu_configuracion.gd" id="1_pcvoh"]
 [ext_resource type="PackedScene" uid="uid://b4ctirjw1xq53" path="res://ui/titulo.tscn" id="1_tanxu"]
 [ext_resource type="FontFile" uid="uid://br0ox30rd3ddl" path="res://assets/fuentes/merriweather_sans/MerriweatherSans-VariableFont_wght.ttf" id="3_ltsyv"]
 [ext_resource type="PackedScene" uid="uid://sddk5xqkdc4t" path="res://ui/boton.tscn" id="3_tbv8m"]
 [ext_resource type="PackedScene" uid="uid://deb6ahist7ktm" path="res://ui/slider/slider.tscn" id="4_yx0ux"]
+[ext_resource type="PackedScene" uid="uid://cse0m25gr0cyf" path="res://ui/checkbox/checkbox.tscn" id="5_yx0ux"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pcvoh"]
 bg_color = Color(0.0313726, 0.0784314, 0.0588235, 1)
@@ -138,10 +139,9 @@ nombre_bus = "sfx"
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel/ContenedorBotones"]
 z_index = 10
 layout_mode = 2
+theme_override_constants/separation = 5
 
-[node name="CheckBoxFullScreen" type="CheckBox" parent="Panel/Panel/ContenedorBotones/HBoxContainer"]
-z_index = 10
-texture_filter = 2
+[node name="CheckBoxFullScreen" parent="Panel/Panel/ContenedorBotones/HBoxContainer" instance=ExtResource("5_yx0ux")]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Panel/Panel/ContenedorBotones/HBoxContainer"]
