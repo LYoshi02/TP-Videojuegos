@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://u2v70bwbni5b"
-path="res://.godot/imported/pajaro.png-f6243d754c83d7bc4f665a53e995159e.ctex"
+uid="uid://6uxpdxccpsu3"
+path="res://.godot/imported/tero.png-a8fa35e60d00dacf811f6ce4be995929.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/enemigos/pajaro.png"
-dest_files=["res://.godot/imported/pajaro.png-f6243d754c83d7bc4f665a53e995159e.ctex"]
+source_file="res://assets/sprites/enemigos/tero.png"
+dest_files=["res://.godot/imported/tero.png-a8fa35e60d00dacf811f6ce4be995929.ctex"]
 
 [params]
 
