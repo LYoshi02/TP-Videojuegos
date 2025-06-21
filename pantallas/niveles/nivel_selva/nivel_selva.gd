@@ -6,6 +6,8 @@ extends Node2D
 func _ready() -> void:
 	ReproductorMusica.reproducir_musica(GLOBAL.MUSICAS["NIVEL_1"])
 	
+	#personaje.position = Vector2(30, 386)
+	
 	# Ajustar Camera2D
 	camera_2d.position_smoothing_enabled = false
 	camera_2d.global_position = personaje.global_position
