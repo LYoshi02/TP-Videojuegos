@@ -23,7 +23,8 @@ var tiempo_inicio: float
 func _ready() -> void:
 	monedas_recolectadas = 0
 	if monedas != null:
-		monedas_totales = monedas.get_child_count()
+		monedas_totales = contar_monedas(monedas)
+		print("Monedas totales: " + str(monedas_totales))
 	if personaje != null:
 		posicion_inicial = personaje.position
 		
@@ -80,3 +81,11 @@ func finalizar_nivel():
 
 	GLOBAL.actualizar_nivel(id_nivel, monedas_recolectadas, estrellas_conseguidas, tiempo_total)
 	fin_nivel.mostrar_pantalla_fin_nivel(monedas_recolectadas, monedas_totales, muertes, estrellas_conseguidas, tiempo_total)
+
+func contar_monedas(nodo: Node) -> int:
+	var contador = 0
+	for hijo in nodo.get_children():
+		if hijo.name.containsn("moneda"):
+			contador += 1
+		contador += contar_monedas(hijo)
+	return contador
