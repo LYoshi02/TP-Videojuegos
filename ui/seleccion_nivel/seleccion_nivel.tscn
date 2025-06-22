@@ -26,22 +26,4 @@ offset_bottom = 456.0
 theme_override_font_sizes/font_size = 80
 text = "X"
 
-[node name="CompletadoLabel" type="Label" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 131.0
-offset_top = 468.0
-offset_right = 234.0
-offset_bottom = 491.0
-text = "Completado: "
-
-[node name="MonedasLabel" type="Label" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 131.0
-offset_top = 502.0
-offset_right = 234.0
-offset_bottom = 525.0
-text = "Monedas: "
-
 [connection signal="pressed" from="NivelBoton" to="." method="_on_nivel_boton_pressed"]

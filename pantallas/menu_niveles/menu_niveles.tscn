@@ -95,7 +95,6 @@ offset_top = -370.0
 offset_right = -501.0
 offset_bottom = -370.0
 pivot_offset = Vector2(248, 253)
-total_monedas = 3
 id_nivel = 1
 
 [node name="SeleccionNivel2" parent="Panel2/Niveles" instance=ExtResource("4_nougm")]
@@ -104,9 +103,8 @@ offset_top = -370.0
 offset_right = -227.0
 offset_bottom = -370.0
 pivot_offset = Vector2(-26, 253)
-total_monedas = 12
 id_nivel = 2
-id_nivel_anterior = 1
+id_nivel_anterior = 2
 
 [node name="SeleccionNivel3" parent="Panel2/Niveles" instance=ExtResource("4_nougm")]
 offset_left = 49.0

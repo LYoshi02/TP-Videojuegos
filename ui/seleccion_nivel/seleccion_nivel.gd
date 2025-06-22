@@ -1,18 +1,13 @@
 extends Node
 
-@export var total_monedas: int
 @export var id_nivel: int
 @export var id_nivel_anterior: int
 
 @onready var nivel_boton: Button = $NivelBoton
-@onready var completado_label: Label = $CompletadoLabel
-@onready var monedas_label: Label = $MonedasLabel
 @onready var estrellas_contenedor: HBoxContainer = $EstrellasContenedor
 
 func _ready():
 	var progreso = GLOBAL.obtener_progreso_nivel(id_nivel)
-	completado_label.text = "Completado: " + str(progreso.completado)
-	monedas_label.text = "Monedas: " + str(int(progreso.monedas)).pad_zeros(2) + "/" + str(int(total_monedas)).pad_zeros(2)
 	nivel_boton.text = str(id_nivel)
 	estrellas_contenedor.pintar_estrellas(int(progreso.estrellas))
 
