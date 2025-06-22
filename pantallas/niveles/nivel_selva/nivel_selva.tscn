@@ -14178,9 +14178,14 @@ scale = Vector2(1.19362, 1.19362)
 id_progreso = 2
 
 [node name="Checkpoint3" parent="NodosEscena/Checkpoints" instance=ExtResource("11_x0m7r")]
-position = Vector2(5767, 125)
+position = Vector2(4616, 605)
 scale = Vector2(1.19362, 1.19362)
 id_progreso = 3
+
+[node name="Checkpoint4" parent="NodosEscena/Checkpoints" instance=ExtResource("11_x0m7r")]
+position = Vector2(5767, 125)
+scale = Vector2(1.19362, 1.19362)
+id_progreso = 4
 
 [node name="Carpincho" parent="NodosEscena" instance=ExtResource("18_otn41")]
 position = Vector2(7648, 606)
