@@ -92,7 +92,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 8.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h7e4g"]
@@ -104,7 +104,7 @@ script = ExtResource("1_q8gn0")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_k4743")
 autoplay = "default"
-frame_progress = 0.914556
+frame_progress = 0.663207
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_h7e4g")
