@@ -5,10 +5,10 @@ extends CanvasLayer
 @onready var moneda_label: Label = $MonedasPanel/HBoxContainer/MonedaLabel
 @onready var pausa_panel: Panel = $PausaPanel
 
-func actualizar_label_monedas(monedas_recolectadas: int, _monedas_totales: int):
+func actualizar_label_monedas(monedas_recolectadas: int, _monedas_totales: int) -> void:
 	moneda_label.text = str(monedas_recolectadas).pad_zeros(2)
 
-func actualizar_vidas(vidas_restantes: int):
+func actualizar_vidas(vidas_restantes: int) -> void:
 	for nro_corazon in corazones.size():
 		if nro_corazon < vidas_restantes:
 			#corazones[nro_corazon].show()

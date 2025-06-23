@@ -1,38 +1,37 @@
 extends Node2D
 
-@export var radio_patruya = 50.0
-@export var velocidad_patruya = 5.0
-@export var velocidad_ataque = 500.0
-@export var velocidad_regreso = 300.0
-@export var radio_deteccion = 200.0
-@export var tiempo_enfriamiento = 2.5
-@export var demora_antes_de_atacar = 1.0
-@export var tiempo_espera_post_regreso = 0.5
+@export var radio_patruya: float = 50.0
+@export var velocidad_patruya: float = 5.0
+@export var velocidad_ataque: float = 500.0
+@export var velocidad_regreso: float = 300.0
+@export var radio_deteccion: float = 200.0
+@export var tiempo_enfriamiento: float = 2.5
+@export var demora_antes_de_atacar: float = 1.0
+@export var tiempo_espera_post_regreso: float = 0.5
 
 @onready var jugador: CharacterBody2D = %Personaje
-
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-var posicion_origen
+var posicion_origen: Vector2
 var posicion_transicion: Vector2
-var angulo = 0.0
-var en_ataque = false
-var en_enfriamiento = false
-var esperando_post_regreso = false
-var temporizador_post_regreso = 0.0
+var angulo: float = 0.0
+var en_ataque: bool = false
+var en_enfriamiento: bool = false
+var esperando_post_regreso: bool = false
+var temporizador_post_regreso: float = 0.0
 
 enum Estado { PATRULLANDO, ESPERANDO, ATACANDO, REGRESANDO, TRANSICIONANDO_A_PATRULLA }
-var estado = Estado.PATRULLANDO
+var estado: int = Estado.PATRULLANDO
 
-var posicion_objetivo_ataque
-var posicion_regreso
-var temporizador_enfriamiento = 0.0
-var temporizador_espera = 0.0
+var posicion_objetivo_ataque: Vector2
+var posicion_regreso: Vector2
+var temporizador_enfriamiento: float = 0.0
+var temporizador_espera: float = 0.0
 
-func _ready():
+func _ready() -> void:
 	posicion_origen = global_position
 
-func _process(delta):
+func _process(delta) -> void:
 	animated_sprite_2d.flip_h = jugador.global_position.x >= global_position.x
 		
 	match estado:
@@ -61,7 +60,7 @@ func _process(delta):
 			animated_sprite_2d.play("regresando")
 			if global_position.distance_to(posicion_regreso) < 20.0:
 				# Ajustar el ángulo para retomar el círculo sin saltos
-				var direccion = global_position - posicion_origen
+				var direccion: Vector2 = global_position - posicion_origen
 				angulo = direccion.angle()
 				posicion_transicion = posicion_origen + Vector2(cos(angulo), sin(angulo)) * radio_patruya
 				estado = Estado.TRANSICIONANDO_A_PATRULLA
@@ -81,16 +80,16 @@ func _process(delta):
 		if temporizador_enfriamiento >= tiempo_enfriamiento:
 			en_enfriamiento = false
 
-func patrullar(delta):
+func patrullar(delta) -> void:
 	angulo += velocidad_patruya * delta
 	global_position = posicion_origen + Vector2(cos(angulo), sin(angulo)) * radio_patruya
 
-func verificar_proximidad_jugador():
+func verificar_proximidad_jugador() -> void:
 	if jugador != null and not en_enfriamiento:
 		if abs(global_position.distance_to(jugador.global_position)) <= abs(radio_deteccion):
 			estado = Estado.ESPERANDO
 
-func comenzar_ataque():
+func comenzar_ataque() -> void:
 	posicion_objetivo_ataque = jugador.global_position
 	posicion_regreso = posicion_origen
 	estado = Estado.ATACANDO
@@ -98,8 +97,8 @@ func comenzar_ataque():
 	await get_tree().create_timer(0.32).timeout
 	ReproductorMusica.reproducir_efecto_de_sonido(GLOBAL.EFECTOS_SONIDO["ATAQUE_TERO"], -5)
 
-func mover_hacia(objetivo: Vector2, delta, velocidad):
-	var direccion = (objetivo - global_position).normalized()
+func mover_hacia(objetivo: Vector2, delta, velocidad) -> void:
+	var direccion: Vector2 = (objetivo - global_position).normalized()
 	global_position += direccion * velocidad * delta
 
 

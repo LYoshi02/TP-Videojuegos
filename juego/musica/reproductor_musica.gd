@@ -1,6 +1,6 @@
 extends AudioStreamPlayer
 
-func reproducir_musica(musica: AudioStream, volumen = 0.0):
+func reproducir_musica(musica: AudioStream, volumen: float = 0.0) -> void:
 	if stream == musica:
 		return
 	
@@ -10,10 +10,10 @@ func reproducir_musica(musica: AudioStream, volumen = 0.0):
 	bus = "musica"
 	play()
 
-func pausar_musica():
+func pausar_musica() -> void:
 	stop()
 
-func reproducir_efecto_de_sonido(efecto: AudioStream, volumen = 15):
+func reproducir_efecto_de_sonido(efecto: AudioStream, volumen: float = 15) -> void:
 	var reproductor = AudioStreamPlayer.new()
 	reproductor.stream = efecto
 	reproductor.name = "REPRODUCTOR_SFX"

@@ -1,14 +1,12 @@
 extends CharacterBody2D
 
-
-const VELOCIDAD_MOVIMIENTO = 225.0
-const VELOCIDAD_SALTO = -450.0
-const VELOCIDAD_SALTO_CORTO = -250
-const DURACION_BUFFER_SALTO = 0.15
-const DURACION_COYOTE = 0.15
+const VELOCIDAD_MOVIMIENTO: float = 225.0
+const VELOCIDAD_SALTO: float = -450.0
+const VELOCIDAD_SALTO_CORTO: float = -250
+const DURACION_BUFFER_SALTO: float = 0.15
+const DURACION_COYOTE: float = 0.15
 
 @onready var game_manager: Node = %GameManager
-
 @onready var sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var area_ataque: Area2D = $AreaAtaque
 @onready var timer_inmunidad: Timer = $TimerInmunidad
@@ -21,32 +19,32 @@ var es_inmune: bool = false
 var direccion_movimiento: String = "derecha"
 var timer_buffer_salto: float = 0
 var timer_coyote: float = 0
-var efectos_corte = [GLOBAL.EFECTOS_SONIDO["ATAQUE_MACHETE_1"], GLOBAL.EFECTOS_SONIDO["ATAQUE_MACHETE_2"], 
+var efectos_corte: Array[Resource] = [GLOBAL.EFECTOS_SONIDO["ATAQUE_MACHETE_1"], GLOBAL.EFECTOS_SONIDO["ATAQUE_MACHETE_2"], 
 		GLOBAL.EFECTOS_SONIDO["ATAQUE_MACHETE_3"]]
 var nro_sfx_corte: int = 0
-var animaciones_ataque = ["atacar", "atacar2", "atacar3"]
+var animaciones_ataque: Array[String] = ["atacar", "atacar2", "atacar3"]
 var nro_animacion_ataque: int = 0
 
-func saltar():
+func saltar() -> void:
 	ReproductorMusica.reproducir_efecto_de_sonido(GLOBAL.EFECTOS_SONIDO["SALTO"], 20)
 	velocity.y = VELOCIDAD_SALTO
 
-func saltar_al_costado(x):
+func saltar_al_costado(x) -> void:
 	velocity.y = VELOCIDAD_SALTO
 	velocity.x = x
 
-func saltar_verticalmente(y):
+func saltar_verticalmente(y) -> void:
 	velocity.y = y
 
-func atacar():
+func atacar() -> void:
 	if not atacando:
 		atacando = true
 		reproducir_efecto_sonido_ataque()
 	
-	var objetos_atacados = area_ataque.get_overlapping_areas()
-	var objeto_roto = false
+	var objetos_atacados: Array[Area2D] = area_ataque.get_overlapping_areas()
+	var objeto_roto: bool = false
 	for objeto in objetos_atacados:
-		var objeto_padre = objeto.get_parent()
+		var objeto_padre: Node = objeto.get_parent()
 		if objeto_padre.is_in_group(GLOBAL.GRUPOS["ROMPIBLE"]):
 			objeto_padre.romper()
 			objeto_roto = true
@@ -54,14 +52,14 @@ func atacar():
 	if objeto_roto:
 		ReproductorMusica.reproducir_efecto_de_sonido(GLOBAL.EFECTOS_SONIDO["CORTE_ENREDADERA"], 5)
 
-func reproducir_efecto_sonido_ataque():
+func reproducir_efecto_sonido_ataque() -> void:
 	ReproductorMusica.reproducir_efecto_de_sonido(efectos_corte[nro_sfx_corte], 5)
 	if nro_sfx_corte < efectos_corte.size() - 1:
 		nro_sfx_corte += 1
 	else:
 		nro_sfx_corte = 0
 
-func actualizar_posicion_area_ataque():
+func actualizar_posicion_area_ataque() -> void:
 	match direccion_movimiento:
 		"derecha":
 			area_ataque.position = Vector2(15, 0)
@@ -115,7 +113,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = VELOCIDAD_SALTO_CORTO
 	
 	# Get the input direction and handle the movement/deceleration.
-	var direccion := Input.get_axis("izquierda", "derecha")
+	var direccion: float = Input.get_axis("izquierda", "derecha")
 	if atacando and is_on_floor():
 		velocity.x = 0
 	elif direccion:
@@ -133,11 +131,11 @@ func _physics_process(delta: float) -> void:
 		sprite_2d.flip_h = false
 		direccion_movimiento = "derecha"
 
-func daniar_con_impulso(posicion_impacto: Vector2):
-	var x_delta = position.x - posicion_impacto.x
-	var y_delta = position.y - posicion_impacto.y
-	var fuerza_salto = 0
-	var es_ultima_vida = game_manager.es_ultima_vida()
+func daniar_con_impulso(posicion_impacto: Vector2) -> void:
+	var x_delta: float = position.x - posicion_impacto.x
+	var y_delta: float = position.y - posicion_impacto.y
+	var fuerza_salto: int = 0
+	var es_ultima_vida: bool = game_manager.es_ultima_vida()
 
 	if not es_ultima_vida and not es_inmune:
 		# Determinar si el impacto fue más horizontal o vertical
@@ -160,8 +158,8 @@ func daniar_con_impulso(posicion_impacto: Vector2):
 
 	daniar_personaje()
 
-func daniar_personaje():
-	var era_inmune = es_inmune
+func daniar_personaje() -> void:
+	var era_inmune: bool = es_inmune
 	if not era_inmune:
 		es_inmune = true
 		timer_inmunidad.start()
@@ -169,13 +167,13 @@ func daniar_personaje():
 		print("Decrease health")
 		game_manager.reducir_vida()
 
-func reaparecer():
-	var es_ultima_vida = game_manager.es_ultima_vida()
+func reaparecer() -> void:
+	var es_ultima_vida: bool = game_manager.es_ultima_vida()
 	daniar_personaje()
 	if not es_ultima_vida:
 		game_manager.reaparecer_jugador(self)
 
-func reproducir_animacion_ataque():
+func reproducir_animacion_ataque() -> void:
 	sprite_2d.play(animaciones_ataque[nro_animacion_ataque])
 
 func _on_animated_sprite_2d_animation_finished() -> void:

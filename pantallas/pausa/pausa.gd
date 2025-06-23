@@ -2,8 +2,8 @@ extends Panel
 
 @onready var panel_configuracion: Panel = $PanelConfiguracion
 
-func _process(_delta):
-	var esc_pressed = Input.is_action_just_pressed("pausa")
+func _process(_delta: float) -> void:
+	var esc_pressed: bool = Input.is_action_just_pressed("pausa")
 	if esc_pressed == true:
 		if get_tree().paused:
 			get_tree().paused = false;

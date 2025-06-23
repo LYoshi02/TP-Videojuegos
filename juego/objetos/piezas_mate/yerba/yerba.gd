@@ -4,17 +4,17 @@ extends Area2D
 @onready var sprite_mate: Sprite2D = $Sprite2D
 @onready var sprite_rayos_luz: Sprite2D = $SpriteRayosLuz
 
-var t = 0.0
+var t: float = 0.0
 
-func pulsar(sprite: Sprite2D, delta: float, velocidad: float, rango_scale: float):
+func pulsar(sprite: Sprite2D, delta: float, velocidad: float, rango_scale: float) -> void:
 	t += delta * velocidad
-	var factor_scale = 0.5 + sin(t) * rango_scale
+	var factor_scale: float = 0.5 + sin(t) * rango_scale
 	sprite.scale = Vector2(factor_scale, factor_scale)
 
-func rotar(sprite: Sprite2D, delta: float, velocidad: float):
+func rotar(sprite: Sprite2D, delta: float, velocidad: float) -> void:
 	sprite.rotation += velocidad * delta
 
-func _process(delta):
+func _process(delta) -> void:
 	rotar(sprite_rayos_luz, delta, 0.50)
 	pulsar(sprite_mate, delta, 3, 0.04)
 

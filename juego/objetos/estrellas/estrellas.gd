@@ -4,7 +4,7 @@ extends HBoxContainer
 @onready var estrella_2: TextureRect = $MarginContainer2/Estrella2
 @onready var estrella_3: TextureRect = $MarginContainer3/Estrella3
 
-var shader_blanco_code := """
+var shader_blanco_code: String = """
 	shader_type canvas_item;
 
 	void fragment() {
@@ -13,10 +13,10 @@ var shader_blanco_code := """
 	}
 """
 
-func pintar_estrellas(estrellas_conseguidas: int):
-	var shader_blanco := Shader.new()
+func pintar_estrellas(estrellas_conseguidas: int) -> void:
+	var shader_blanco: Shader = Shader.new()
 	shader_blanco.code = shader_blanco_code
-	var shader_material := ShaderMaterial.new()
+	var shader_material: ShaderMaterial = ShaderMaterial.new()
 	shader_material.shader = shader_blanco
 	
 	if estrellas_conseguidas == 0:

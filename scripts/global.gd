@@ -35,17 +35,17 @@ const EFECTOS_SONIDO = {
 # Lógica de Guardado
 var SaveManager = preload("res://scripts/save_manager.gd").new()
 
-func guardar_progreso():
+func guardar_progreso() -> void:
 	SaveManager.guardar_progreso()
 
-func cargar_progreso():
+func cargar_progreso() -> void:
 	SaveManager.cargar_progreso()
 
-func actualizar_nivel(nivel_id: int, monedas: int, estrellas: int, tiempo_total: float):
+func actualizar_nivel(nivel_id: int, monedas: int, estrellas: int, tiempo_total: float) -> void:
 	SaveManager.actualizar_nivel(nivel_id, monedas, estrellas, tiempo_total)
 
 func obtener_progreso_nivel(nivel_id: int) -> Dictionary:
 	return SaveManager.obtener_progreso_nivel(nivel_id)
 
-func borrar_progreso():
+func borrar_progreso() -> void:
 	SaveManager.borrar_progreso()

@@ -1,7 +1,6 @@
 extends Area2D
 
 @onready var jugador: CharacterBody2D = %Personaje
-
 @onready var timer: Timer = $Timer
 
 func _on_body_entered(body: Node2D) -> void:

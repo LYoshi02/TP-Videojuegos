@@ -5,11 +5,10 @@ extends Node2D
 @onready var ray_cast_derecha: RayCast2D = $RayCastDerecha
 @onready var ray_cast_izquierda: RayCast2D = $RayCastIzquierda
 
-
-var velocidad = 40
-var direccion = 1
-var activo = false
-var caminando = false
+var velocidad: int = 40
+var direccion: int = 1
+var activo: bool = false
+var caminando: bool = false
 
 func _process(delta: float) -> void:
 	if not activo:
@@ -26,10 +25,10 @@ func _process(delta: float) -> void:
 		
 		position.x += direccion * velocidad * delta
 
-func activar_parado():
+func activar_parado() -> void:
 	animated_sprite_2d.play("parado")
 	
-func activar_caminar():
+func activar_caminar() -> void:
 	animated_sprite_2d.play("caminando")
 
 func _on_animated_sprite_2d_animation_finished() -> void:

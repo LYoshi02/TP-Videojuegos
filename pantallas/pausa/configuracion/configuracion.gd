@@ -3,7 +3,7 @@ extends Panel
 @onready var check_box_full_screen: CheckBox = $Panel/ContenedorBotones/VBoxContainer/HBoxContainer/CheckBoxFullScreen
 
 func _ready() -> void:
-	var current_window_mode = DisplayServer.window_get_mode()
+	var current_window_mode: int = DisplayServer.window_get_mode()
 	if current_window_mode == DisplayServer.WINDOW_MODE_FULLSCREEN:
 		check_box_full_screen.button_pressed = true
 
