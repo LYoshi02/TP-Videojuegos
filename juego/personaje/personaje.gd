@@ -22,9 +22,9 @@ var direccion_movimiento: String = "derecha"
 var timer_buffer_salto: float = 0
 var timer_coyote: float = 0
 var efectos_corte = [GLOBAL.EFECTOS_SONIDO["ATAQUE_MACHETE_1"], GLOBAL.EFECTOS_SONIDO["ATAQUE_MACHETE_2"], 
-		GLOBAL.EFECTOS_SONIDO["ATAQUE_MACHETE_3"], GLOBAL.EFECTOS_SONIDO["ATAQUE_MACHETE_2"]]
+		GLOBAL.EFECTOS_SONIDO["ATAQUE_MACHETE_3"]]
 var nro_sfx_corte: int = 0
-var animaciones_ataque = ["atacar", "atacar2", "atacar3", "atacar2"]
+var animaciones_ataque = ["atacar", "atacar2", "atacar3"]
 var nro_animacion_ataque: int = 0
 
 func saltar():
@@ -176,7 +176,6 @@ func reaparecer():
 		game_manager.reaparecer_jugador(self)
 
 func reproducir_animacion_ataque():
-	print(animaciones_ataque[nro_animacion_ataque])
 	sprite_2d.play(animaciones_ataque[nro_animacion_ataque])
 
 func _on_animated_sprite_2d_animation_finished() -> void:
