@@ -7,6 +7,7 @@ extends Area2D
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == GLOBAL.PERSONAJE["NOMBRE_ELEMENTO"]:
 		Engine.time_scale = 0.5
+		ReproductorMusica.reproducir_efecto_de_sonido(GLOBAL.EFECTOS_SONIDO["CAIDA"], 0)
 		timer.start()
 
 func _on_timer_timeout() -> void:

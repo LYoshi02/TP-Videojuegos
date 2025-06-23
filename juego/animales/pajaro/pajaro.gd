@@ -94,6 +94,9 @@ func comenzar_ataque():
 	posicion_objetivo_ataque = jugador.global_position
 	posicion_regreso = posicion_origen
 	estado = Estado.ATACANDO
+	ReproductorMusica.reproducir_efecto_de_sonido(GLOBAL.EFECTOS_SONIDO["ATAQUE_TERO"], -5)
+	await get_tree().create_timer(0.32).timeout
+	ReproductorMusica.reproducir_efecto_de_sonido(GLOBAL.EFECTOS_SONIDO["ATAQUE_TERO"], -5)
 
 func mover_hacia(objetivo: Vector2, delta, velocidad):
 	var direccion = (objetivo - global_position).normalized()

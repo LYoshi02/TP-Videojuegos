@@ -21,9 +21,14 @@ var es_inmune: bool = false
 var direccion_movimiento: String = "derecha"
 var timer_buffer_salto: float = 0
 var timer_coyote: float = 0
+var efectos_corte = [GLOBAL.EFECTOS_SONIDO["ATAQUE_MACHETE_1"], GLOBAL.EFECTOS_SONIDO["ATAQUE_MACHETE_2"], 
+		GLOBAL.EFECTOS_SONIDO["ATAQUE_MACHETE_3"], GLOBAL.EFECTOS_SONIDO["ATAQUE_MACHETE_2"]]
+var nro_sfx_corte: int = 0
+var animaciones_ataque = ["atacar", "atacar2", "atacar3", "atacar2"]
+var nro_animacion_ataque: int = 0
 
 func saltar():
-	ReproductorMusica.reproducir_efecto_de_sonido(GLOBAL.EFECTOS_SONIDO["SALTO"])
+	ReproductorMusica.reproducir_efecto_de_sonido(GLOBAL.EFECTOS_SONIDO["SALTO"], 20)
 	velocity.y = VELOCIDAD_SALTO
 
 func saltar_al_costado(x):
@@ -36,12 +41,25 @@ func saltar_verticalmente(y):
 func atacar():
 	if not atacando:
 		atacando = true
+		reproducir_efecto_sonido_ataque()
 	
 	var objetos_atacados = area_ataque.get_overlapping_areas()
+	var objeto_roto = false
 	for objeto in objetos_atacados:
 		var objeto_padre = objeto.get_parent()
 		if objeto_padre.is_in_group(GLOBAL.GRUPOS["ROMPIBLE"]):
 			objeto_padre.romper()
+			objeto_roto = true
+	
+	if objeto_roto:
+		ReproductorMusica.reproducir_efecto_de_sonido(GLOBAL.EFECTOS_SONIDO["CORTE_ENREDADERA"], 5)
+
+func reproducir_efecto_sonido_ataque():
+	ReproductorMusica.reproducir_efecto_de_sonido(efectos_corte[nro_sfx_corte], 5)
+	if nro_sfx_corte < efectos_corte.size() - 1:
+		nro_sfx_corte += 1
+	else:
+		nro_sfx_corte = 0
 
 func actualizar_posicion_area_ataque():
 	match direccion_movimiento:
@@ -59,7 +77,7 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		saltando = false
 		if atacando:
-			sprite_2d.play("atacar")
+			reproducir_animacion_ataque()
 		elif velocity.x > 1 || velocity.x < -1:
 			sprite_2d.play("correr")
 		else:
@@ -67,7 +85,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity += get_gravity() * delta
 		if atacando:
-			sprite_2d.play("atacar")
+			reproducir_animacion_ataque()
 		elif not saltando:
 			saltando = true
 			sprite_2d.play("saltar")
@@ -157,9 +175,17 @@ func reaparecer():
 	if not es_ultima_vida:
 		game_manager.reaparecer_jugador(self)
 
+func reproducir_animacion_ataque():
+	print(animaciones_ataque[nro_animacion_ataque])
+	sprite_2d.play(animaciones_ataque[nro_animacion_ataque])
+
 func _on_animated_sprite_2d_animation_finished() -> void:
-	if sprite_2d.animation == "atacar":
+	if sprite_2d.animation.containsn("atacar"):
 		atacando = false
+		if nro_animacion_ataque < animaciones_ataque.size() - 1:
+			nro_animacion_ataque += 1
+		else:
+			nro_animacion_ataque = 0
 
 func _on_timer_inmunidad_timeout() -> void:
 	es_inmune = false

@@ -22,6 +22,12 @@ const MUSICAS = {
 }
 
 const EFECTOS_SONIDO = {
+	"ATAQUE_MACHETE_1": preload("res://assets/audio/sfx/ataque_machete_1.wav"),
+	"ATAQUE_MACHETE_2": preload("res://assets/audio/sfx/ataque_machete_2.wav"),
+	"ATAQUE_MACHETE_3": preload("res://assets/audio/sfx/ataque_machete_3.wav"),
+	"ATAQUE_TERO": preload("res://assets/audio/sfx/ataque_tero.wav"),
+	"CAIDA": preload("res://assets/audio/sfx/caida_sapucai.wav"),
+	"CORTE_ENREDADERA": preload("res://assets/audio/sfx/corte_enredadera.wav"),
 	"MONEDA": preload("res://assets/audio/sfx/moneda.wav"),
 	"SALTO": preload("res://assets/audio/sfx/salto.wav")
 }
