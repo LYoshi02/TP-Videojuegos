@@ -26,7 +26,7 @@ func _ready() -> void:
 		monedas_totales = contar_monedas(monedas)
 		print("Monedas totales: " + str(monedas_totales))
 	if personaje != null:
-		posicion_inicial = personaje.position
+		posicion_inicial = personaje.global_position
 		
 	tiempo_inicio = Time.get_ticks_msec() / 1000.0
 
