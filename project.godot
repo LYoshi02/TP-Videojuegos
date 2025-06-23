@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="videojuegos"
+config/name="La Leyenda del Mate Perfecto"
 run/main_scene="uid://tuk1qbeie8yx"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
