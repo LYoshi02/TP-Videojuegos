@@ -14208,11 +14208,11 @@ limit_smoothed = true
 position_smoothing_enabled = true
 
 [node name="DeathZone" parent="NodosEscena" instance=ExtResource("6_pp1ql")]
-position = Vector2(881, 731)
+position = Vector2(891, 670)
 
 [node name="Finish" parent="NodosEscena" instance=ExtResource("16_0jcmt")]
 position = Vector2(7496, 240)
-scale = Vector2(2.94566, 2.94962)
+scale = Vector2(2.75, 2.754)
 
 [node name="HUD" parent="." instance=ExtResource("7_cs7oh")]
 unique_name_in_owner = true
