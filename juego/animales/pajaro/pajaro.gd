@@ -59,7 +59,7 @@ func _process(delta):
 		Estado.REGRESANDO:
 			mover_hacia(posicion_regreso, delta, velocidad_regreso)
 			animated_sprite_2d.play("regresando")
-			if global_position.distance_to(posicion_regreso) < 50.0:
+			if global_position.distance_to(posicion_regreso) < 20.0:
 				# Ajustar el ángulo para retomar el círculo sin saltos
 				var direccion = global_position - posicion_origen
 				angulo = direccion.angle()
@@ -68,7 +68,7 @@ func _process(delta):
 		Estado.TRANSICIONANDO_A_PATRULLA:
 			mover_hacia(posicion_transicion, delta, velocidad_regreso)
 			animated_sprite_2d.play("patrullando")
-			if global_position.distance_to(posicion_transicion) < 50.0:
+			if global_position.distance_to(posicion_transicion) < 20.0:
 				global_position = posicion_transicion  # Para asegurar la precisión
 				esperando_post_regreso = true
 				temporizador_post_regreso = 0.0
@@ -86,8 +86,8 @@ func patrullar(delta):
 	global_position = posicion_origen + Vector2(cos(angulo), sin(angulo)) * radio_patruya
 
 func verificar_proximidad_jugador():
-	if jugador and not en_enfriamiento:
-		if global_position.distance_to(jugador.global_position) <= radio_deteccion:
+	if jugador != null and not en_enfriamiento:
+		if abs(global_position.distance_to(jugador.global_position)) <= abs(radio_deteccion):
 			estado = Estado.ESPERANDO
 
 func comenzar_ataque():
