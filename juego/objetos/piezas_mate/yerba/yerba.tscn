@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://qhgyl5ye1fff"]
 
 [ext_resource type="Script" uid="uid://cemxinduvllvw" path="res://juego/objetos/piezas_mate/yerba/yerba.gd" id="1_7pnx1"]
-[ext_resource type="Texture2D" uid="uid://cs201lvaj05ij" path="res://assets/efectos/rayos_luz.png" id="2_vw130"]
 [ext_resource type="Texture2D" uid="uid://6xpfbyjf2e06" path="res://assets/imagenes/yerba_sagrada.png" id="3_7pnx1"]
+[ext_resource type="Texture2D" uid="uid://bpwdvch3elfax" path="res://assets/efectos/rayos_luz.png" id="4_p2eu4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f20d8"]
 size = Vector2(9, 10)
@@ -12,9 +12,10 @@ script = ExtResource("1_7pnx1")
 
 [node name="SpriteRayosLuz" type="Sprite2D" parent="."]
 modulate = Color(0.894118, 0.713726, 0.101961, 0.588235)
+texture_filter = 2
 position = Vector2(1.19209e-07, 1.19209e-07)
-scale = Vector2(0.0109124, 0.0109124)
-texture = ExtResource("2_vw130")
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("4_p2eu4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
